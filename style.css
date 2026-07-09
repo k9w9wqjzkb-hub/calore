@@ -464,3 +464,14 @@ h2 {
   color: #e4572e;
   font-size: 0.95rem;
 }
+
+.card-anno {
+  margin-bottom: 16px;
+}
+
+.card-anno .big-number {
+  font-size: 30px;
+  font-weight: 700;
+  color: #e4572e;
+  margin-top: 8px;
+}

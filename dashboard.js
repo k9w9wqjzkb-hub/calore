@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ================= DASHBOARD ================= */
 function renderDashboard() {
   const db = getDB();
+
+  renderAnnoTermicoAttivo();
   renderTotali(db);
   renderConsumiPerStanzaCard(db);
   renderAnnoTermicoSelect();
@@ -16,6 +18,12 @@ function renderDashboard() {
 /* ================= TOTALI ================= */
 function renderTotali(db) {
   const totale = getTotaleConsumi();
+    function renderAnnoTermicoAttivo() {
+      const el = document.getElementById("annoTermicoAttivo");
+      if (!el) return;
+
+      el.textContent = getAnnoTermicoAttivo();
+    }
   const totaleElem = document.getElementById("totaleConsumi");
   if (totaleElem) totaleElem.textContent = totale.toLocaleString("it-IT");
 
