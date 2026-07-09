@@ -464,16 +464,22 @@ h2 {
   color: #e4572e;
   font-size: 0.95rem;
 }
+/* ================= CARD ANNO TERMICO ================= */
+.card.card-anno {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e5e5;
+    padding: 8px 14px !important;
+    margin-bottom: 12px;
+}
 
-.card-anno {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #faf7f5;
-  border: 1px solid #ececec;
-  border-radius: 16px;
-  padding: 10px 14px;
-  margin-bottom: 14px;
+.card.card-anno .big-number{
+    font-size:22px;
+    margin-top:0;
+}
+
+.card.card-anno .card-top{
+    margin-bottom:2px;
 }
 
 .card-anno .label {
