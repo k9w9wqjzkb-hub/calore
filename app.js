@@ -2,9 +2,40 @@
 const DB_KEY = "calore-db";
 
 const defaultDB = {
+  annoTermicoAttivo: null,
   caloriferi: [],
   letture: []
 };
+/* ================= ANNO TERMICO ATTIVO ================= */
+
+function getAnnoTermicoAttivo() {
+  const db = getDB();
+
+  // Se esiste già lo utilizza
+  if (db.annoTermicoAttivo) {
+    return db.annoTermicoAttivo;
+  }
+
+  // Altrimenti lo crea automaticamente
+  const oggi = new Date();
+  const anno = oggi.getFullYear();
+
+  const nuovoAnno =
+    oggi.getMonth() >= 9
+      ? `${anno}-${anno + 1}`
+      : `${anno - 1}-${anno}`;
+
+  db.annoTermicoAttivo = nuovoAnno;
+  saveDB(db);
+
+  return nuovoAnno;
+}
+
+function setAnnoTermicoAttivo(anno) {
+  const db = getDB();
+  db.annoTermicoAttivo = anno;
+  saveDB(db);
+}
 
 function getDB() {
   return JSON.parse(localStorage.getItem(DB_KEY)) || structuredClone(defaultDB);
