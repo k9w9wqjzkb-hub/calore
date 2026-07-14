@@ -1,0 +1,15 @@
+{
+  "name": "Caloriferi",
+  "short_name": "Caloriferi",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#2f80ed",
+  "theme_color": "#2f80ed",
+  "icons": [
+    {
+      "src": "icons/caloriferi-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

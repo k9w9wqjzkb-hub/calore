@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    
+<!--═══════════════════════════════════════════════════
+    META
+════════════════════════════════════════════════════-->
+
+<meta charset="UTF-8">
+        
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+    <title>Ripartizione</title>
+    
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Calore">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<!--═══════════════════════════════════════════════════
+    STILI
+═════════════════════════════════════════════════════-->
+
+<link rel="stylesheet" href="style.css">
+<link rel="apple-touch-icon" href="icons/caloriferi-512.png">
+<link rel="manifest" href="manifest.json">
+    
+</head>
+
+<body>
+
+<!--═══════════════════════════════════════════════════
+    TOPBAR
+════════════════════════════════════════════════════-->
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="logo">🔥</div>
+    <span class="app-name">Calore</span>
+  </div>
+
+  <div class="topbar-right">
+    <button class="icon-btn" onclick="location.href='index.html'">🏠</button>
+    <button class="icon-btn" onclick="location.href='caloriferi.html'">♨️</button>
+    <button class="icon-btn" onclick="location.href='storico.html'">🕘</button>
+    <button class="icon-btn" onclick="location.href='grafici.html'">📊</button>
+    <button class="icon-btn active">📋</button>
+  </div>
+</header>
+
+<!--═══════════════════════════════════════════════════
+    CONTENUTO
+════════════════════════════════════════════════════-->
+
+<main class="container with-topbar">
+
+<!--───────────────────────────────────────────────────
+    HEADER RIPARTIZIONE
+────────────────────────────────────────────────────-->
+
+    <div class="page-header">
+
+        <div class="page-title">
+            <h1>Ripartizione</h1>
+            <p>Unità contabilizzate</p>
+        </div>
+
+    </div>
+
+<!--───────────────────────────────────────────────────
+    ANNO TERMICO
+────────────────────────────────────────────────────-->
+
+    <div class="card">
+
+        <h3>📋 Anno termico</h3>
+
+        <div class="row">
+            <span class="label">Anno contabilizzazione</span>
+            <span class="value" id="annoTermicoAttivo">--</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Ultimo aggiornamento</span>
+            <span class="value" id="ultimoAggiornamento">--</span>
+        </div>
+
+    </div>
+
+<!--───────────────────────────────────────────────────
+    ELENCO RIPARTIZIONE
+────────────────────────────────────────────────────-->
+
+    <div id="ripartizioneContainer"></div>
+
+<!--───────────────────────────────────────────────────
+    TOTALE UNITÀ CONTABILIZZATE
+────────────────────────────────────────────────────-->
+
+    <div class="card card-total">
+
+        <div class="card-top">
+
+            <span>🔥 Totale unità contabilizzate</span>
+
+        </div>
+
+        <div
+            class="big-number"
+            id="totaleUnita">
+            0
+        </div>
+
+    </div>
+
+</main>
+
+<!--═══════════════════════════════════════════════════
+    MODALE RIPARTIZIONE
+════════════════════════════════════════════════════-->
+
+<div
+    id="sheetOverlayRipartizione"
+    class="sheet-overlay hidden">
+</div>
+
+<div
+    id="sheetRipartizione"
+    class="sheet hidden">
+
+    <div class="sheet-header">
+
+        <h2>Modifica fattore</h2>
+
+        <button
+            class="close-btn"
+            onclick="chiudiRipartizioneSheet()">
+            ✕
+        </button>
+
+    </div>
+
+    <div class="sheet-content">
+
+        <label>Locale</label>
+
+        <input
+            type="text"
+            id="ripartizioneLocale"
+            readonly>
+
+        <label>Fattore</label>
+
+        <input
+            type="number"
+            step="0.01"
+            id="ripartizioneFattore">
+
+        <button
+            class="btn-pill full"
+            onclick="salvaFattoreRipartizione()">
+
+            Salva
+
+        </button>
+
+    </div>
+
+</div>
+
+<!--═══════════════════════════════════════════════════
+    SCRIPT
+════════════════════════════════════════════════════-->
+
+<script src="app.js"></script>
+
+<script src="ripartizione.js"></script>
+
+<!--═══════════════════════════════════════════════════
+    SERVICE WORKER
+════════════════════════════════════════════════════-->
+
+<script>
+    
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker attivo su:', reg.scope))
+      .catch(err => console.log('Errore SW:', err));
+  });
+}
+</script>
+</body>
+</html>
