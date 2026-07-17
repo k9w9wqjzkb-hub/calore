@@ -1,10 +1,10 @@
 /*==================================================
-       CALORE PRO
-    Dashboard
-    Versione 1.0
+    CALORE PRO
+    Core applicazione
 
-    Autore : Sergio Comi
-    Anno   : 2026
+    Versione : 1.0
+    Autore   : Sergio Comi
+    Anno     : 2026
 ==================================================*/
 
 
@@ -19,6 +19,7 @@ const APP_VERSION = "1.0";
     02 - DATABASE
 ==================================================*/
 
+// Struttura iniziale del database
 const defaultDB = {
       annoTermicoAttivo: null,
       caloriferi: [],
@@ -30,9 +31,17 @@ const defaultDB = {
  */
 function getDB() {
 
-    const db = JSON.parse(localStorage.getItem(DB_KEY));
+    try {
 
-    return db ?? structuredClone(defaultDB);
+        const db = JSON.parse(localStorage.getItem(DB_KEY));
+
+        return db ?? structuredClone(defaultDB);
+
+    } catch {
+
+        return structuredClone(defaultDB);
+
+    }
 
 }
 
@@ -76,7 +85,10 @@ function formatDate(date) {
 
 function formatDisplay(valore) {
 
+    if (valore == null) return "--";
+
     return Number(valore).toLocaleString(LOCALE);
+
 }
 
 function formatFattore(valore) {
@@ -112,12 +124,13 @@ function getAnnoTermicoAttivo() {
 
   // Se non esiste viene inizializzato
   const oggi = new Date();
-  const anno = oggi.getFullYear();
+
+  const annoCorrente = oggi.getFullYear();
 
   const nuovoAnno =
     oggi.getMonth() >= 9
-      ? `${anno}-${anno + 1}`
-      : `${anno - 1}-${anno}`;
+      ? `${annoCorrente}-${annoCorrente + 1}`
+      : `${annoCorrente - 1}-${annoCorrente}`;
 
   db.annoTermicoAttivo = nuovoAnno;
   saveDB(db);
@@ -204,9 +217,10 @@ function getTotaleConsumi(annoTermico = getAnnoTermicoAttivo()) {
 
 function getConsumiPerStanza(annoTermico = getAnnoTermicoAttivo()) {
 
+    const db = getDB();
     const risultati = {};
 
-    getDB().caloriferi.forEach(calorifero => {
+    db.caloriferi.forEach(calorifero => {
 
         calcolaConsumiPerCalorifero(calorifero.id).forEach(consumo => {
 
@@ -225,9 +239,10 @@ function getConsumiPerStanza(annoTermico = getAnnoTermicoAttivo()) {
 
 function getConsumiMensili(annoTermico = getAnnoTermicoAttivo()) {
 
+    const db = getDB();
     const consumi = Array(8).fill(0);
 
-    getDB().caloriferi.forEach(calorifero => {
+    db.caloriferi.forEach(calorifero => {
 
         calcolaConsumiPerCalorifero(calorifero.id).forEach(consumo => {
 
@@ -308,7 +323,9 @@ function getMediaConsumi(annoTermico = getAnnoTermicoAttivo()) {
 
     const consumi = [];
 
-    getDB().caloriferi.forEach(calorifero => {
+    const db = getDB();
+
+    db.caloriferi.forEach(calorifero => {
 
         calcolaConsumiPerCalorifero(calorifero.id)
             .forEach(consumo => {
@@ -365,7 +382,7 @@ function aggiornaDashboard() {
 }
 
 /*==================================================
-    09 - LETTURE
+    08 - LETTURE
 ==================================================*/
 function aggiungiLettura(caloriferoId, valore, data) {
   const db = getDB();
@@ -392,7 +409,7 @@ function getLettureFiltrate({ caloriferoId , stanza } = {}) {
 }
 
 /*==================================================
-    11 - BACKUP / RIPRISTINO
+    09 - BACKUP / RIPRISTINO
 ==================================================*/
 // Esporta database in file JSON
 function backupDB() {
@@ -419,10 +436,14 @@ function ripristinaDB(file) {
       const data = JSON.parse(e.target.result);
 
       // Validazione minima
-      if (!data.caloriferi || !data.letture) {
-        alert("File non valido");
+        if (
+            !Array.isArray(data.caloriferi) ||
+            !Array.isArray(data.letture) ||
+            !("annoTermicoAttivo" in data)
+        ) {
+            alert("File non valido");
         return;
-      }
+        }
 
       saveDB(data);
       alert("Ripristino completato ✔️");
@@ -435,7 +456,7 @@ function ripristinaDB(file) {
 }
 
 /*==================================================
-    12 - MODALI
+    10 - MODALI
 ==================================================*/
 
 let callbackConferma = null;
@@ -477,18 +498,18 @@ function eseguiConferma() {
 }
 
 /*==================================================
-    13 - INIZIALIZZAZIONE
+    11 - INIZIALIZZAZIONE
 ==================================================*/
 document.addEventListener("DOMContentLoaded", () => {
 
+    if (document.getElementById("totaleConsumi")) {
+        aggiornaDashboard();
+    }
 
-  if (document.getElementById("totaleConsumi")) {
-    aggiornaDashboard();
-  }
+    if (document.getElementById("filtroCalorifero")) {
+        popolaFiltroCaloriferi();
+    }
 
-  if (document.getElementById("filtroCalorifero")) {
-    popolaFiltroCaloriferi();
-  }
     const btnConferma = document.getElementById("btnConferma");
 
     if (btnConferma) {

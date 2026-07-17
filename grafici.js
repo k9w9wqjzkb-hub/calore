@@ -1,6 +1,7 @@
 // =========================================
 // GRAFICI
-// =========================================
+// Utilizza le funzioni condivise di app.js
+// =========================================           
 
 const ctxAnno = document.getElementById("chartAnno").getContext("2d");
 const ctxStanza = document.getElementById("chartStanza").getContext("2d");

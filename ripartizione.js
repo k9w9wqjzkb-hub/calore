@@ -70,17 +70,11 @@ function renderCaloriferiRipartizione() {
     const container = document.getElementById("ripartizioneContainer");
 
     container.innerHTML = "";
-    console.log(db.ripartizione);
 
     db.caloriferi.forEach(calorifero => {
 
         const card = document.createElement("div");
         card.className = "card";
-
-        // ultima lettura del calorifero
-        const letture = db.letture
-            .filter(l => l.caloriferoId === calorifero.id)
-            .sort((a, b) => new Date(b.data) - new Date(a.data));
 
         const display = getUltimaLettura(calorifero.id);
         const fattore = getFattore(calorifero.id);
