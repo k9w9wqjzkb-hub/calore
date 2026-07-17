@@ -1,0 +1,72 @@
+/*==================================================
+    MODALS
+==================================================*/
+
+.app-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.app-modal{
+    width:min(92%,380px);
+   background:#faf7f5;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+    animation:modalShow .18s ease;
+}
+
+.app-modal-header{
+    padding:18px;
+    font-size:18px;
+    font-weight:700;
+    color:#333;
+    border-bottom:1px solid #e8e2de;
+}
+
+.app-modal-body{
+    padding:22px 18px;
+    color:#333;
+    line-height:1.5;
+    white-space:pre-line;
+}
+
+.app-modal-footer{
+    padding:16px;
+    display:flex;
+    justify-content:flex-end;
+    border-top:1px solid #eee;
+}
+
+.app-modal-btn{
+    border:none;
+    background:#ff7a00;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.app-modal-btn:hover{
+    opacity:.9;
+}
+
+@keyframes modalShow{
+
+    from{
+        opacity:0;
+        transform:scale(.94);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}

@@ -1,38 +1,17 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    
-<!--═══════════════════════════════════════════════════
-    META
-════════════════════════════════════════════════════-->
-
 <meta charset="UTF-8">
-        
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <title>Ripartizione</title>
-    
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Calore">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<!--═══════════════════════════════════════════════════
-    STILI
-═════════════════════════════════════════════════════-->
+<title>Calore • Ripartizione</title>
 
 <link rel="stylesheet" href="style.css">
-<link rel="apple-touch-icon" href="icons/caloriferi-512.png">
-<link rel="manifest" href="manifest.json">
-    
 </head>
 
 <body>
 
-<!--═══════════════════════════════════════════════════
-    TOPBAR
-════════════════════════════════════════════════════-->
+<!-- ================= TOPBAR ================= -->
 
 <header class="topbar">
   <div class="topbar-left">
@@ -49,15 +28,9 @@
   </div>
 </header>
 
-<!--═══════════════════════════════════════════════════
-    CONTENUTO
-════════════════════════════════════════════════════-->
+<!-- ================= CONTENUTO ================= -->
 
 <main class="container with-topbar">
-
-<!--───────────────────────────────────────────────────
-    HEADER RIPARTIZIONE
-────────────────────────────────────────────────────-->
 
     <div class="page-header">
 
@@ -68,9 +41,7 @@
 
     </div>
 
-<!--───────────────────────────────────────────────────
-    ANNO TERMICO
-────────────────────────────────────────────────────-->
+    <!-- ================= ANNO TERMICO ================= -->
 
     <div class="card">
 
@@ -88,15 +59,11 @@
 
     </div>
 
-<!--───────────────────────────────────────────────────
-    ELENCO RIPARTIZIONE
-────────────────────────────────────────────────────-->
+    <!-- ================= ELENCO ================= -->
 
     <div id="ripartizioneContainer"></div>
 
-<!--───────────────────────────────────────────────────
-    TOTALE UNITÀ CONTABILIZZATE
-────────────────────────────────────────────────────-->
+    <!-- ================= TOTALE ================= -->
 
     <div class="card card-total">
 
@@ -116,14 +83,14 @@
 
 </main>
 
-<!--═══════════════════════════════════════════════════
-    MODALE RIPARTIZIONE
-════════════════════════════════════════════════════-->
+<!-- ================= OVERLAY ================= -->
 
 <div
     id="sheetOverlayRipartizione"
     class="sheet-overlay hidden">
 </div>
+
+<!-- ================= MODALE ================= -->
 
 <div
     id="sheetRipartizione"
@@ -169,27 +136,11 @@
 
 </div>
 
-<!--═══════════════════════════════════════════════════
-    SCRIPT
-════════════════════════════════════════════════════-->
-
+<!-- ================= SCRIPT ================= -->
+ 
+<script src="version.js"></script>
 <script src="app.js"></script>
-
 <script src="ripartizione.js"></script>
 
-<!--═══════════════════════════════════════════════════
-    SERVICE WORKER
-════════════════════════════════════════════════════-->
-
-<script>
-    
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('Service Worker attivo su:', reg.scope))
-      .catch(err => console.log('Errore SW:', err));
-  });
-}
-</script>
 </body>
 </html>

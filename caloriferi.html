@@ -1,38 +1,19 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    
-<!--═══════════════════════════════════════════════════
-    META
-═════════════════════════════════════════════════════-->
-
-<meta charset="UTF-8">
-    
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    
+  <meta charset="UTF-8">
+<!-- 🔑 QUESTO È FONDAMENTALE -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>Caloriferi</title>
-  
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Calore">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<!--═══════════════════════════════════════════════════
-    STILI
-═════════════════════════════════════════════════════-->
-
   <link rel="stylesheet" href="style.css">
-  <link rel="apple-touch-icon" href="icons/caloriferi-512.png">
   <link rel="manifest" href="manifest.json">
-      
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Caloriferi">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body>
 
-<!--═══════════════════════════════════════════════════
-    TOPBAR
-════════════════════════════════════════════════════-->
-
+<!-- TOPBAR FISSA -->
 <header class="topbar">
   <div class="topbar-left">
     <div class="logo">🔥</div>
@@ -47,47 +28,30 @@
   </div>
 </header>
 
-<!--═══════════════════════════════════════════════════
-    CONTENUTO
-════════════════════════════════════════════════════-->
-
 <main class="container with-topbar">
 
-<!--───────────────────────────────────────────────────
-    HEADER CALORIFERI
-────────────────────────────────────────────────────-->
-
-<div class="page-header">
+  <!-- HEADER -->
+  <div class="page-header">
     <div class="page-title">
-        <h1>Caloriferi</h1>
-        <p>Gestisci i caloriferi del tuo appartamento</p>
+      <h1>Caloriferi</h1>
+      <p>Gestisci i caloriferi del tuo appartamento</p>
     </div>
     <div class="page-action">
-        
-<!--───────────────────────────────────────────────────
-    PULSANTE AGGIUNGI CALORIFERO
-────────────────────────────────────────────────────-->
-
-        <button class="btn-pill" onclick="apriCaloriferoSheet()">＋ Aggiungi</button>
+      <button class="btn-pill" onclick="apriCaloriferoSheet()">＋ Aggiungi</button>
     </div>
-</div>
+  </div>
 
-<!--───────────────────────────────────────────────────
-    ELENCO CALORIFERI
-────────────────────────────────────────────────────-->
-
+  <!-- CONTAINER CALORIFERI -->
   <div id="caloriferiContainer"></div>
 
 </main>
 
-<!--═══════════════════════════════════════════════════
-    MODALE CALORIFERO
-════════════════════════════════════════════════════-->
-
+<!-- OVERLAY -->
 <div id="sheetOverlay"
      class="sheet-overlay hidden"
      onclick="chiudiCaloriferoSheet()"></div>
 
+<!-- SHEET NUOVO CALORIFERO -->
 <div id="caloriferoSheet" class="sheet hidden">
   <div class="sheet-header">
     <h2>Nuovo Calorifero</h2>
@@ -104,7 +68,7 @@
     <label>Fattore di conversione</label>
     <input
             type="text"
-            inputmode="decimal"
+            imputmode="decimal"
             id="fattoreCalorifero"
             placeholder="0,4888">
 
@@ -112,12 +76,48 @@
   </div>
 </div>
 
-<!--═══════════════════════════════════════════════════
-    MODALE CONFERMA
-════════════════════════════════════════════════════-->
+<!-- MODALE CONFERMA ELIMINAZIONE -->
+<div id="confirmOverlay" class="sheet-overlay hidden"></div>
 
+<div id="confirmModal" class="sheet hidden">
+
+    <div class="sheet-header">
+        <h2>🗑 Elimina calorifero</h2>
+    </div>
+
+    <div class="sheet-content">
+
+        <p id="confirmMessage">
+            Verranno eliminate anche tutte le letture associate.<br><br>
+            Questa operazione non può essere annullata.
+        </p>
+
+        <div class="confirm-buttons">
+
+            <button class="btn-secondary"
+                    onclick="chiudiConfirmModal()">
+                Annulla
+            </button>
+
+            <button class="btn-pill"
+                    id="confirmButton">
+                Elimina
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     MODALE CONFERMA
+================================================== -->
+
+<!-- Overlay -->
 <div id="overlayConferma" class="sheet-overlay hidden"></div>
 
+<!-- Modale -->
 <div id="modalConferma" class="sheet hidden">
 
   <div class="sheet-header">
@@ -148,22 +148,11 @@
 
 </div>
 
-<!--═══════════════════════════════════════════════════
-    SCRIPT
-════════════════════════════════════════════════════-->
-
+<!-- JS -->
+ <script src="version.js"></script>
 <script src="app.js"></script>
-<script src="dashboard.js"></script>
+<script src="caloriferi.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    renderCaloriferi();
-  });
-</script>
-
-<!--═══════════════════════════════════════════════════
-    SERVICE WORKER
-════════════════════════════════════════════════════-->
 
 <script>
   if ('serviceWorker' in navigator) {

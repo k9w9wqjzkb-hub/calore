@@ -1,21 +1,22 @@
 /*==================================================
-    CALORE v1.0
-
-    Core Application
+       CALORE PRO
+    Dashboard
+    Versione 1.0
 
     Autore : Sergio Comi
     Anno   : 2026
 ==================================================*/
 
+
 /*==================================================
-    01 COSTANTI
+    01 - COSTANTI
 ==================================================*/
 
 const DB_KEY = "calore-db";
 const APP_VERSION = "1.0";
 
 /*==================================================
-    02 DATABASE
+    02 - DATABASE
 ==================================================*/
 
 const defaultDB = {
@@ -28,9 +29,11 @@ const defaultDB = {
  * Restituisce il database corrente.
  */
 function getDB() {
-  const db = JSON.parse(localStorage.getItem(DB_KEY)) || structuredClone(defaultDB)
-    
-  return db;
+
+    const db = JSON.parse(localStorage.getItem(DB_KEY));
+
+    return db ?? structuredClone(defaultDB);
+
 }
 
 /**
@@ -41,31 +44,46 @@ function saveDB(db) {
 }
 
 /*==================================================
-    03 IDENTIFICATORI
+    03 - UTILS
 ==================================================*/
 
 function uid() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2);
 }
 
+/**
+ * Aggiorna il testo di un elemento del DOM.
+ * Se l'elemento non esiste, non esegue alcuna operazione.
+ */
+function aggiornaElemento(id, valore) {
+
+    const elemento = document.getElementById(id);
+
+    if (!elemento) return;
+
+    elemento.textContent = valore;
+
+}
+
 /*==================================================
-    04 FORMATTAZIONE
+    04 - FORMATTAZIONE
 ==================================================*/
+const LOCALE = "it-IT";
 
 function formatDate(date) {
-  return new Date(date).toLocaleDateString("it-IT");
+    return new Date(date).toLocaleDateString(LOCALE);
 }
 
 function formatDisplay(valore) {
 
-    return Number(valore).toLocaleString("it-IT");
+    return Number(valore).toLocaleString(LOCALE);
 }
 
 function formatFattore(valore) {
 
     if (valore == null) return "--";
 
-    return Number(valore).toLocaleString("it-IT", {
+    return Number(valore).toLocaleString(LOCALE, {
         minimumFractionDigits: 4,
         maximumFractionDigits: 4
     });
@@ -76,7 +94,7 @@ function formatUnita(valore) {
 
     if (valore == null) return "--";
 
-    return Math.round(valore).toLocaleString("it-IT");
+    return Math.round(valore).toLocaleString(LOCALE);
 
 }
 
@@ -87,12 +105,12 @@ function formatUnita(valore) {
 function getAnnoTermicoAttivo() {
   const db = getDB();
 
-  // Se esiste già lo utilizza
+  // Restituisce l'anno termico salvato
   if (db.annoTermicoAttivo) {
     return db.annoTermicoAttivo;
   }
 
-  // Altrimenti lo crea automaticamente
+  // Se non esiste viene inizializzato
   const oggi = new Date();
   const anno = oggi.getFullYear();
 
@@ -128,7 +146,7 @@ function getMeseAnnoTermico(date) {
 }
 
 /*==================================================
-    06 - CALCOLI
+    06 - SERVIZI
 ==================================================*/
 
 // restituisce array di oggetti { data, consumo }
@@ -143,11 +161,10 @@ function calcolaConsumiPerCalorifero(caloriferoId) {
     for (let i = 0; i < letture.length; i++) {
 
         const corrente = letture[i];
-        const precedente = letture[i - 1];
 
-        const consumo = precedente
-            ? Number(corrente.valore) - Number(precedente.valore)
-            : Number(corrente.valore);
+        const consumo = i === 0
+            ? Number(corrente.valore)
+            : Number(corrente.valore) - Number(letture[i - 1].valore);
 
         risultati.push({
             data: corrente.data,
@@ -159,77 +176,168 @@ function calcolaConsumiPerCalorifero(caloriferoId) {
     }
 
     return risultati;
+
 }
 
-function calcolaUnitaContabilizzate(caloriferoId){
-
-    const display = getUltimaLettura(caloriferoId);
-
-    const calorifero = getDB().caloriferi.find(
-        c => c.id === caloriferoId
-    );
-
-    if (!calorifero) return null;
-
-    return display * calorifero.fattore;
-}
-
-function getTotaleConsumi() {
+function getTotaleConsumi(annoTermico = getAnnoTermicoAttivo()) {
 
     const db = getDB();
 
     let totale = 0;
 
-    db.caloriferi.forEach(c => {
+    db.caloriferi.forEach(calorifero => {
 
-        calcolaConsumiPerCalorifero(c.id).forEach(r => {
-            totale += r.consumo;
-        });
+        calcolaConsumiPerCalorifero(calorifero.id)
+            .forEach(consumo => {
+
+                if (getAnnoTermico(consumo.data) !== annoTermico) return;
+
+                totale += consumo.consumo;
+
+            });
 
     });
 
     return totale;
+
 }
 
-function getNumeroCaloriferi() {
-  return getDB().caloriferi.length;
+function getConsumiPerStanza(annoTermico = getAnnoTermicoAttivo()) {
+
+    const risultati = {};
+
+    getDB().caloriferi.forEach(calorifero => {
+
+        calcolaConsumiPerCalorifero(calorifero.id).forEach(consumo => {
+
+            if (getAnnoTermico(consumo.data) !== annoTermico) return;
+
+            risultati[consumo.stanza] =
+                (risultati[consumo.stanza] || 0) + consumo.consumo;
+
+        });
+
+    });
+
+    return risultati;
+
 }
 
-function getNumeroLetture() {
-  return getDB().letture.length;
+function getConsumiMensili(annoTermico = getAnnoTermicoAttivo()) {
+
+    const consumi = Array(8).fill(0);
+
+    getDB().caloriferi.forEach(calorifero => {
+
+        calcolaConsumiPerCalorifero(calorifero.id).forEach(consumo => {
+
+            if (getAnnoTermico(consumo.data) !== annoTermico) return;
+
+            consumi[getMeseAnnoTermico(consumo.data)] += consumo.consumo;
+
+        });
+
+    });
+
+    return consumi;
+
 }
 
-function getFattore(caloriferoId) {
+function getUltimaLetturaCompleta(caloriferoId) {
 
-    const db = getDB();
+    const letture = getDB().letture
+        .filter(l => l.caloriferoId === caloriferoId)
+        .sort((a, b) => new Date(b.data) - new Date(a.data));
 
-    const calorifero = db.caloriferi.find(c => c.id === caloriferoId);
+    return letture.length ? letture[0] : null;
 
-    return calorifero ? Number(calorifero.fattore) : null;
+}
+
+function getDataUltimaLettura(caloriferoId) {
+
+    const ultima = getUltimaLetturaCompleta(caloriferoId);
+
+    return ultima
+        ? ultima.data.split("T")[0]
+        : null;
+
+}
+
+function getUltimaLettura(caloriferoId) {
+
+    const ultima = getUltimaLetturaCompleta(caloriferoId);
+
+    return ultima
+        ? Number(ultima.valore)
+        : 0;
 
 }
 
 function getUnita(caloriferoId) {
 
     const display = getUltimaLettura(caloriferoId);
-
     const fattore = getFattore(caloriferoId);
 
-    if (fattore === null) return null;
+    if (display === null || fattore === null) {
+        return null;
+    }
 
     return display * fattore;
 
 }
 
-function getUltimaLettura(caloriferoId) {
+function getFattore(caloriferoId) {
 
-    const letture = getDB().letture
-        .filter(l => l.caloriferoId === caloriferoId)
-        .sort((a, b) => new Date(b.data) - new Date(a.data));
+    const calorifero = getDB().caloriferi.find(
+    c => c.id === caloriferoId
+    );
 
-    return letture.length
-        ? Number(letture[0].valore)
-        : 0;
+    return calorifero ? Number(calorifero.fattore) : null;
+
+}
+
+function getNumeroLetture() {
+  return getDB().letture.length;
+}
+
+function getNumeroCaloriferi() {
+  return getDB().caloriferi.length;
+}
+
+function getMediaConsumi(annoTermico = getAnnoTermicoAttivo()) {
+
+    const consumi = [];
+
+    getDB().caloriferi.forEach(calorifero => {
+
+        calcolaConsumiPerCalorifero(calorifero.id)
+            .forEach(consumo => {
+
+                if (getAnnoTermico(consumo.data) !== annoTermico) return;
+
+                if (consumo.consumo > 0) {
+                    consumi.push(consumo.consumo);
+                }
+
+            });
+
+    });
+
+    if (consumi.length === 0) return 0;
+
+    return consumi.reduce((a, b) => a + b, 0) / consumi.length;
+
+}
+
+function getUltimaLetturaRegistrata() {
+
+    const letture = getDB().letture;
+
+    if (letture.length === 0) return null;
+
+    return letture
+        .slice()
+        .sort((a, b) => new Date(b.data) - new Date(a.data))[0];
 
 }
 
@@ -238,165 +346,27 @@ function getUltimaLettura(caloriferoId) {
 ==================================================*/
 
 function aggiornaDashboard() {
-  if (!document.getElementById("totaleConsumi")) return;
 
-  document.getElementById("totaleConsumi").textContent = getTotaleConsumi();
-  document.getElementById("numeroCaloriferi").textContent = getNumeroCaloriferi();
-  document.getElementById("numeroLetture").textContent = getNumeroLetture();
-}
-
-/*==================================================
-    08 - CALORIFERI
-==================================================*/
-
-let editingId = null;
-
-function apriCaloriferoSheet() {
-  document.getElementById("sheetOverlay")?.classList.remove("hidden");
-  document.getElementById("caloriferoSheet")?.classList.remove("hidden");
-}
-
-function chiudiCaloriferoSheet() {
-  document.getElementById("sheetOverlay")?.classList.add("hidden");
-  document.getElementById("caloriferoSheet")?.classList.add("hidden");
-
-  editingId = null;
-  const nome = document.getElementById("nomeCalorifero");
-  const stanza = document.getElementById("stanzaCalorifero");
-  if (nome) nome.value = "";
-  if (stanza) stanza.value = "";
-    const fattore = document.getElementById("fattoreCalorifero");
-    if (fattore) fattore.value = "";
-}
-
-/**
- * Salva un nuovo calorifero
- * oppure aggiorna quello esistente.
- */
-function salvaCalorifero() {
-  const nome = document.getElementById("nomeCalorifero").value.trim();
-  const stanza = document.getElementById("stanzaCalorifero").value.trim();
-  const fattore = parseFloat(
-      document.getElementById("fattoreCalorifero").value.replace(",", ".")
-    ) || 0;
-  if (!nome || !stanza) return alert("Compila tutti i campi");
-
-  const db = getDB();
-
-  if (editingId) {
-    const c = db.caloriferi.find(c => c.id === editingId);
-    if (c) {
-        c.nome = nome;
-        c.stanza = stanza;
-        c.fattore = fattore;
-    }
-  } else {
-      db.caloriferi.push({
-          id: uid(),
-          nome,
-          stanza,
-          fattore
-      });
-  }
-
-  saveDB(db);
-  chiudiCaloriferoSheet();
-  renderCaloriferi();
-  aggiornaDashboard();
-}
-
-function modificaCalorifero(id) {
-  const c = getDB().caloriferi.find(c => c.id === id);
-  if (!c) return;
-
-  editingId = id;
-  document.getElementById("nomeCalorifero").value = c.nome;
-  document.getElementById("stanzaCalorifero").value = c.stanza;
-  document.getElementById("fattoreCalorifero").value = c.fattore ?? "";
-  apriCaloriferoSheet();
-}
-
-function eliminaCalorifero(id) {
-
-    const db = getDB();
-
-    const calorifero = db.caloriferi.find(c => c.id === id);
-
-    if (!calorifero) return;
-
-    const contenuto = `
-        <div class="confirm-info">
-            <div class="confirm-name">${calorifero.nome}</div>
-            <div class="confirm-room">📍 ${calorifero.stanza}</div>
-        </div>
-
-        <div class="confirm-divider"></div>
-
-        <div class="confirm-message">
-            Verranno eliminate anche tutte le letture associate.<br><br>
-            Questa operazione non può essere annullata.
-        </div>
-    `;
-
-    apriConferma(
-        "🗑 Elimina calorifero",
-        contenuto,
-        () => {
-
-            db.caloriferi = db.caloriferi.filter(c => c.id !== id);
-            db.letture = db.letture.filter(l => l.caloriferoId !== id);
-
-            saveDB(db);
-
-            renderCaloriferi();
-
-            aggiornaDashboard();
-
-        }
+    aggiornaElemento(
+        "totaleConsumi",
+        formatUnita(getTotaleConsumi())
     );
 
-}
+    aggiornaElemento(
+        "numeroCaloriferi",
+        getNumeroCaloriferi()
+    );
 
-function renderCaloriferi() {
-  const container = document.getElementById("caloriferiContainer");
-  if (!container) return;
+    aggiornaElemento(
+        "numeroLetture",
+        getNumeroLetture()
+    );
 
-  const db = getDB();
-  container.innerHTML = "";
-
-  const perStanza = {};
-  db.caloriferi.forEach(c => (perStanza[c.stanza] ||= []).push(c));
-
-  Object.entries(perStanza).forEach(([stanza, list]) => {
-    const room = document.createElement("div");
-    room.className = "room";
-    room.innerHTML = `<h3>🏠 ${stanza} <span>(${list.length})</span></h3>`;
-
-    list.forEach(c => {
-      room.innerHTML += `
-        <div class="radiator-card">
-          <div class="rad-left">
-            <div class="rad-icon">♨️</div>
-            <div>
-              <div class="rad-title">${c.nome}</div>
-              <div class="rad-sub">${c.stanza}</div>
-            </div>
-          </div>
-          <div class="rad-actions">
-            <button onclick="modificaCalorifero('${c.id}')">✏️</button>
-            <button onclick="eliminaCalorifero('${c.id}')">🗑</button>
-          </div>
-        </div>`;
-    });
-
-    container.appendChild(room);
-  });
 }
 
 /*==================================================
     09 - LETTURE
 ==================================================*/
-
 function aggiungiLettura(caloriferoId, valore, data) {
   const db = getDB();
   const c = db.caloriferi.find(c => c.id === caloriferoId);
@@ -414,60 +384,17 @@ function aggiungiLettura(caloriferoId, valore, data) {
   saveDB(db);
 }
 
-function getLettureFiltrate({ caloriferoId = null, stanza = null } = {}) {
+function getLettureFiltrate({ caloriferoId , stanza } = {}) {
   return getDB().letture
     .filter(l => !caloriferoId || l.caloriferoId === caloriferoId)
     .filter(l => !stanza || l.stanza === stanza)
     .sort((a, b) => new Date(b.data) - new Date(a.data));
 }
 
-function apriLetturaSheet() {
-  const db = getDB();
-  if (db.caloriferi.length === 0) {
-    alert("Prima aggiungi almeno un calorifero");
-    return;
-  }
-
-  const select = document.getElementById("letturaCalorifero");
-  select.innerHTML = "";
-
-  db.caloriferi.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c.id;
-    opt.textContent = `${c.nome} (${c.stanza})`;
-    select.appendChild(opt);
-  });
-
-    document.getElementById("sheetOverlayLettura").classList.remove("hidden");
-
-    document.getElementById("letturaSheet").classList.remove("hidden");
-   
-    document.getElementById("letturaValore").value = "";
-    document.getElementById("letturaData").value = "";
-}
-
-function chiudiLetturaSheet() {
-  document.getElementById("sheetOverlayLettura")?.classList.add("hidden");
-  document.getElementById("letturaSheet")?.classList.add("hidden");
-}
-
-function salvaLettura() {
-  const id = document.getElementById("letturaCalorifero").value;
-  const valore = document.getElementById("valoreLettura").value;
-  const data = document.getElementById("dataLettura").value;
-
-  if (!id || !valore || !data) return alert("Compila tutti i campi");
-  if (isNaN(valore) || valore < 0) return alert("Valore non valido");
-
-  aggiungiLettura(id, valore, data);
-  chiudiLetturaSheet();
-  aggiornaDashboard();
-}
 
 /* =================================================
     10 - STORICO
 ==================================================*/
-
 function popolaFiltroCaloriferi() {
   const select = document.getElementById("filtroCalorifero");
   if (!select) return;
@@ -486,7 +413,6 @@ function popolaFiltroCaloriferi() {
 /*==================================================
     11 - BACKUP / RIPRISTINO
 ==================================================*/
-
 // Esporta database in file JSON
 function backupDB() {
   const db = getDB();
@@ -517,10 +443,10 @@ function ripristinaDB(file) {
         return;
       }
 
-      localStorage.setItem(DB_KEY, JSON.stringify(data));
+      saveDB(data);
       alert("Ripristino completato ✔️");
       location.reload();
-    } catch (err) {
+    } catch (_) {
       alert("Errore nel file di backup");
     }
   };
@@ -566,19 +492,22 @@ function eseguiConferma() {
     }
 
     chiudiConferma();
+
 }
 
 /*==================================================
     13 - INIZIALIZZAZIONE
 ==================================================*/
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    renderCaloriferi();
+
+  if (document.getElementById("totaleConsumi")) {
     aggiornaDashboard();
+  }
+
+  if (document.getElementById("filtroCalorifero")) {
     popolaFiltroCaloriferi();
-    
-    /* Inizializza solo gli elementi presenti nella pagina corrente */
+  }
     const btnConferma = document.getElementById("btnConferma");
 
     if (btnConferma) {

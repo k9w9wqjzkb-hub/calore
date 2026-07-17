@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-
-<!--═══════════════════════════════════════════════════
-    META
-═════════════════════════════════════════════════════-->
-
+<head>
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-
-        <title>Dashboard</title>
-        
+<!-- 🔑 QUESTO È FONDAMENTALE -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="modals.css">
+<link rel="apple-touch-icon" href="icons/caloriferi-512.png">
+<link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Calore">
+<meta name="apple-mobile-web-app-title" content="Caloriferi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<!--═══════════════════════════════════════════════════
-    STILI
-═════════════════════════════════════════════════════-->
 
-        <link rel="stylesheet" href="style.css">
-        <link rel="apple-touch-icon" href="icons/caloriferi-512.png">
-        <link rel="manifest" href="manifest.json">
-    </head>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">--->
+</head>
 <body>
-
-<!--═══════════════════════════════════════════════════
-    TOPBAR
-════════════════════════════════════════════════════-->
 
 <header class="topbar">
   <div class="topbar-left">
@@ -45,40 +31,28 @@
   </div>
 </header>
 
-<!--═══════════════════════════════════════════════════
-    CONTENUTO
-════════════════════════════════════════════════════-->
-
 <main class="container with-topbar">
     
-<!--═══════════════════════════════════════════════════
-    ANNO TERMICO
-════════════════════════════════════════════════════-->
-
     <div class="card-anno">
         <span class="label">🔥 Anno termico</span>
         <span class="value" id="annoTermicoAttivo"></span>
     </div>
 
-<!--═══════════════════════════════════════════════════
-    HEADER DASHBOARD
-════════════════════════════════════════════════════-->
+  <!-- HEADER DASHBOARD -->
 
-<div class="dashboard-header">
+  <div class="dashboard-header">
     <div class="dashboard-title">
       <h1>Dashboard</h1>
       <p>Monitora i consumi dei tuoi caloriferi</p>
     </div>
     <div class="dashboard-action">
-      <button class="btn-pill" onclick="apriLetturaSheet()">＋ Nuova Lettura</button>
+      <button class="btn-pill" onclick="apriLetturaSheet()">📝 Registra lettura mensile</button>
     </div>
   </div>
 
-<!--═══════════════════════════════════════════════════
-    CONSUMO TOTALE
-════════════════════════════════════════════════════-->
+  <!-- CARDS TOTALI -->
 
-<div class="card card-total">
+  <div class="card card-total">
     <div class="card-top">
       <span>Consumo Totale</span>
       <div class="icon">🔥</div>
@@ -87,10 +61,6 @@
     <span class="unit">unità</span>
   </div>
 
-<!--═══════════════════════════════════════════════════
-    NUMERO CALORIFERI
-════════════════════════════════════════════════════-->
-  
   <div class="card card-small">
     <div>
       <span class="label">Caloriferi</span>
@@ -99,10 +69,6 @@
     <div class="icon-gray">♨️</div>
   </div>
 
-<!--═══════════════════════════════════════════════════
-    NUMERO LETTURE
-════════════════════════════════════════════════════-->
-  
   <div class="card card-small">
     <div>
       <span class="label">Letture</span>
@@ -111,27 +77,19 @@
     <div class="icon-gray">📄</div>
   </div>
 
-<!--═══════════════════════════════════════════════════
-    GRAFICO CONSUMI MENSILI
-════════════════════════════════════════════════════-->
-  
+  <!-- CARD GRAFICO CONSUMI-->
   <div class="card">
     <h3>Andamento Consumi Mensili</h3>
     <canvas id="consumiChart" height="180"></canvas>
   </div>
 
-<!--═══════════════════════════════════════════════════
-    CONSUMI PER STANZA
-════════════════════════════════════════════════════-->
-  
+  <!-- CARD CONSUMI PER STANZA -->
   <div class="card" id="consumiPerStanza">
     <h3>Consumi per Stanza</h3>
   </div>
 
-<!--═══════════════════════════════════════════════════
-    BACKUP
-════════════════════════════════════════════════════-->
-  
+  <!-- BACKUP -->
+
   <div class="card">
     <h3>Backup dati</h3>
     <button class="btn-pill full" onclick="backupDB()">
@@ -147,14 +105,12 @@
   </div>
 </main>
 
-<!--═══════════════════════════════════════════════════
-    MODALE NUOVA LETTURA
-════════════════════════════════════════════════════-->
-
+<!-- OVERLAY NUOVA LETTURA -->
 <div id="sheetOverlayLettura"
      class="sheet-overlay hidden"
      onclick="chiudiLetturaSheet()"></div>
 
+<!-- SHEET NUOVA LETTURA -->
 <div id="letturaSheet" class="sheet hidden">
   <div class="sheet-header">
     <h2>Nuova Lettura</h2>
@@ -165,29 +121,56 @@
     <label>Calorifero</label>
     <select id="letturaCalorifero"></select>
 
+<div class="ultima-lettura">
+
+    <div class="ultima-title">
+        Ultima lettura registrata
+    </div>
+
+    <div class="ultima-data" id="ultimaLetturaData">
+        --
+    </div>
+
+    <div class="ultima-display">
+        <span>📟 Display</span>
+        <strong id="ultimaLetturaValore">--</strong>
+    </div>
+
+</div>
+
     <label>Valore</label>
-    <input type="number" id="letturaValore" placeholder="Es: 123">
+    <input
+       type="number" 
+       id="letturaValore" 
+       placeholder="Es: 123">
 
     <label>Data</label>
     <input type="date" id="letturaData">
 
-    <button class="btn-pill full" onclick="salvaLettura()">Aggiungi</button>
-  </div>
+    <div class="sheet-actions">
+
+    <button class="btn-secondary" onclick="chiudiLetturaSheet()">
+        Annulla
+    </button>
+
+    <button class="btn-pill" onclick="salvaLettura()">
+        Registra
+    </button>
+
 </div>
 
-<!--═══════════════════════════════════════════════════
-    SCRIPT
-════════════════════════════════════════════════════-->
-
+<!-- JS -->
+<script src="version.js"></script>
 <script src="app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="modals.js"></script>
 <script src="dashboard.js"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
         .then(reg => console.log('Service Worker attivo su:', reg.scope))
-        .catch(err => console.log('Errore SW:', err));
+        .catch(err => console.error('Errore SW:', err));
     });
   }
 </script>

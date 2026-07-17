@@ -10,13 +10,10 @@ Foglio di stile principale
 ==================================================*/
 
  /*==================================================
-     01 RESET
+     01 - RESET
  ==================================================*/
-
-*,
-*::before,
-*::after{
-    box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -25,43 +22,17 @@ body {
   background: #faf7f5;
   color: #1c1c1e;
 }
-
-input, select, textarea {
-  font-size: 16px;
-}
-
-/*==================================================
-    01.1 Variabili CSS
-==================================================*/
-
-:root{
-
-    --primary:#e4572e;
-
-    --primary-light:#fde6df;
-
-    --bg:#faf7f5;
-
-    --card:#ffffff;
-
-    --text:#1c1c1e;
-
-    --gray:#8e8e93;
-
-    --radius:18px;
-
-}
-
-/*==================================================
-    02 BODY
-==================================================*/
 html, body {
   touch-action: manipulation;
   -webkit-text-size-adjust: 100%;
 }
 
+input, select, textarea {
+  font-size: 16px;
+}
+
  /*==================================================
-     03 LAYOUT
+     02 - LAYOUT
  ==================================================*/
 .container {
   padding: 20px;
@@ -73,7 +44,7 @@ html, body {
 }
 
  /*==================================================
-     04 HEADER
+     03 - HEADER
  ==================================================*/
 .dashboard-header, .page-header {
   display: flex;
@@ -108,7 +79,7 @@ html, body {
 }
 
  /*==================================================
-     05 TOPBAR
+     04 - TOPBAR
  ==================================================*/
 .topbar {
   position: fixed;
@@ -166,7 +137,7 @@ html, body {
 }
 
  /*==================================================
-     06 TESTI
+     05 - TYPOGRAPHY
  ==================================================*/
 h1, h2 {
   margin: 0 0 12px 0;
@@ -198,7 +169,7 @@ h2 {
 }
 
  /*==================================================
-     07 BUTTONS
+     06 - BUTTONS
  ==================================================*/
 .btn-pill {
   background: #e4572e;
@@ -214,6 +185,7 @@ h2 {
   background: #d94a24;
 }
 
+/* full width */
 .btn-pill.full {
   width: 100%;
   font-size: 16px;
@@ -228,9 +200,9 @@ h2 {
 }
 
  /*==================================================
-     08 CARD
+     07 - CARD COMUNI
  ==================================================*/
-
+/* Card standard dell'app */
 .card {
   background: white;
   border-radius: 18px;
@@ -256,10 +228,6 @@ h2 {
   border-radius: 12px;
 }
 
-/*==================================================
-    08.1 CARD COMUNI
-==================================================*/
-
 .card-total .big-number {
   font-size: 42px;
   font-weight: 600;
@@ -267,43 +235,40 @@ h2 {
   margin-top: 12px;
 }
 
-/*==================================================
-    08.2 CARD ANNO TERMICO
-==================================================*/
+/***** Card Anno Termico *****/
 
-.card.card-anno {
-    background: transparent !important;
-    box-shadow: none !important;
+.card-anno {
+    background: transparent;
     border: 1px solid #e5e5e5;
-    padding: 8px 14px !important;
+    border-radius: 18px;
+    padding: 8px 14px;
     margin-bottom: 12px;
 }
 
-.card.card-anno .big-number{
-    font-size:22px;
-    margin-top:0;
+.card-anno .big-number {
+    font-size: 22px;
+    margin-top: 0;
 }
 
-.card.card-anno .card-top{
-    margin-bottom:2px;
+.card-anno .card-top {
+    margin-bottom: 2px;
 }
 
 .card-anno .label {
-  color: #8e8e93;
-  font-size: 14px;
-  font-weight: 500;
+    color: #8e8e93;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .card-anno .value {
-  color: #e4572e;
-  font-size: 18px;
-  font-weight: 700;
+    color: #e4572e;
+    font-size: 18px;
+    font-weight: 700;
 }
 
  /*==================================================
-     09 FORM
+     08 - FORM
  ==================================================*/
-
 .filter {
   background: #fff;
   border-radius: 14px;
@@ -340,10 +305,10 @@ h2 {
   margin-bottom: 20px;
 }
 
- /*==================================================
-     10 MODALI
- ==================================================*/
 
+ /*==================================================
+     09 - SHEET MODALI
+ ==================================================*/
 .sheet-overlay {
   position: fixed;
   inset: 0;
@@ -382,27 +347,15 @@ h2 {
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
+/*==================================================
+    10 - MODALI
+==================================================*/
+
 .confirm-buttons{
     display:flex;
     justify-content:flex-end;
     gap:12px;
     margin-top:24px;
-}
-
-.btn-danger{
-    min-width:110px;
-    padding:10px 18px;
-    border:none;
-    border-radius:999px;
-    background:#d92d20;
-    color:#fff;
-    font-size:15px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.btn-danger:hover{
-    background:#b42318;
 }
 
 .btn-secondary{
@@ -419,6 +372,22 @@ h2 {
 
 .btn-secondary:hover{
     background:#e5e5ea;
+}
+
+.btn-danger{
+    min-width:110px;
+    padding:10px 18px;
+    border:none;
+    border-radius:999px;
+    background:#d92d20;
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn-danger:hover{
+    background:#b42318;
 }
 
 #testoConferma{
@@ -453,9 +422,8 @@ h2 {
 }
 
  /*==================================================
-     11 DASHBOARD
+     11 - DASHBOARD
  ==================================================*/
-
 .room {
   margin-bottom: 24px;
 }
@@ -513,9 +481,8 @@ h2 {
 }
 
  /*==================================================
-     12 CALORIFERI
+     12 - CALORIFERI
  ==================================================*/
-
 .radiator-card {
   background: #fff;
   border-radius: 18px;
@@ -560,12 +527,11 @@ h2 {
 }
 
  /*==================================================
-     13 STORICO
+     13 - STORICO
  ==================================================*/
-
 .list-header {
   display: grid;
-  grid-template-columns: 140px 2fr 1fr 80px 1fr; /* tutte equamente larghe */
+  grid-template-columns: 140px 2fr 1frpx 80px 1fr; /* tutte equamente larghe */
   gap: 6px;
   padding: 8px 12px;
   font-size: 12px;
@@ -602,9 +568,8 @@ h2 {
 }
 
  /*==================================================
-     14 GRAFICI
+     14 - GRAFICI
  ==================================================*/
-
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -630,9 +595,8 @@ h2 {
 }
 
  /*==================================================
-     15 RIPARTIZIONE
+     15 - RIPARTIZIONE
  ==================================================*/
-
 .rip-card{
     display:flex;
     justify-content:space-between;
@@ -655,7 +619,11 @@ h2 {
 }
 
  /*==================================================
-     16 RESPONSIVE
+     16 - FOOTER
+ ==================================================*/
+
+ /*==================================================
+     17 - RESPONSIVE
  ==================================================*/
   
 @media (max-width: 480px) {
@@ -676,3 +644,284 @@ h2 {
   }
 }
 
+/*==================================================
+    18 - MODALE CONFERMA
+==================================================*/
+
+.confirm-buttons{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:24px;
+}
+
+.btn-secondary{
+    background:#f2f2f7;
+    color:#1c1c1e;
+    border:none;
+    border-radius:999px;
+    padding:10px 18px;
+    cursor:pointer;
+}
+
+.btn-secondary:hover{
+    background:#e5e5ea;
+}
+
+/*==================================================
+    19 - STORICO WRAPPER
+==================================================*/
+
+.storico-wrapper { 
+  margin: 12px 0;
+  padding: 0 8px;
+  border-radius: 14px; 
+  overflow: hidden; 
+  background: #f5f5f5; 
+}
+
+/*==================================================
+    20 - STORICO LISTA
+==================================================*/
+
+.list-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 130px 100px 100px 70px;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-card { 
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 55vh;
+  overflow-y: auto;
+  padding: 6px 4px;
+}
+
+.list-row {
+  display: grid;
+  grid-template-columns: 130px 100px 100px 70px;
+  gap: 6px;
+  padding: 8px 10px;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  font-size: 12px;
+}
+
+.list-row div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.value-col {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.actions button { 
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+}
+
+/* ================= RESPONSIVE GRID (iPhone SAFE) ================= */
+@media (max-width: 480px) {
+  .list-header,
+  .list-row {
+    grid-template-columns: 1.2fr 1fr 0.8fr 0.7fr;
+  }
+}
+
+/* ================= FILTRO ================= */
+.filter { 
+  margin: 12px 0; 
+  max-width: 420px; 
+}
+.filter select { 
+  width: 100%; 
+  padding: 8px 12px; 
+  border-radius: 12px; 
+  border: 1px solid #ccc; 
+}
+
+/* ================= STATISTICHE ================= */
+.stats-grid { 
+  display: grid; 
+  grid-template-columns: repeat(2,1fr); 
+  gap: 10px; 
+  margin-top: 16px; 
+}
+.stat-card { 
+  background: #fff; 
+  padding: 12px; 
+  border-radius: 14px; 
+  text-align: center; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+}
+.stat-card span { 
+  font-size: 12px; 
+  color: #666; 
+}
+.stat-card b { 
+  display: block; 
+  margin-top: 4px; 
+  font-size: 16px; 
+}
+
+/* ================= MODALE ================= */
+.modal { 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.4); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 300; 
+}
+.modal.hidden { display: none; }
+.modal-content { 
+  background: #faf7f5; 
+  padding: 20px; 
+  border-radius: 16px; 
+  width: 90%; 
+  max-width: 360px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+}
+.modal-content h3 { 
+  margin-top: 0; 
+  text-align: center; 
+}
+.modal-content label { 
+  display: block; 
+  font-size: 13px; 
+  margin-top: 12px; 
+  color: #555; 
+}
+.modal-content input,
+.modal-content select { 
+  width: 100%; 
+  padding: 10px; 
+  border-radius: 12px; 
+  border: 1px solid #ccc; 
+  margin-top: 4px; 
+  font-size: 14px; 
+}
+.modal-actions { 
+  display: flex; 
+  gap: 12px; 
+  margin-top: 20px; 
+}
+.modal-actions button { 
+  flex: 1; 
+  padding: 10px; 
+  border-radius: 12px; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600; 
+}
+.modal-actions .primary { background: #ff7a00; color: white; }
+.modal-actions .secondary { background: #ccc; color: #333; }
+
+/*==================================================
+    DASHBOARD - REGISTRA LETTURA
+==================================================*/
+
+.sheet-actions{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+}
+
+.sheet-actions button{
+    flex:1;
+}
+
+.btn-secondary{
+    background:#d9d9d9;
+    color:#333;
+}
+
+/*==================================================
+    DASHBOARD - ULTIMA LETTURA
+==================================================*/
+
+.ultima-lettura{
+
+    margin:12px 0 18px;
+    padding:14px;
+
+    background:#f7f7f7;
+
+    border-radius:14px;
+
+    border:1px solid #ececec;
+
+}
+
+.ultima-title{
+
+    font-size:13px;
+    font-weight:600;
+
+    color:#666;
+
+    margin-bottom:12px;
+
+}
+
+.ultima-data{
+
+    font-size:15px;
+
+    margin-bottom:10px;
+
+}
+
+.ultima-display{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-top:10px;
+
+    border-top:1px solid #e5e5e5;
+
+}
+
+.ultima-display span{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+.ultima-display strong{
+
+    font-size:22px;
+
+    color:#e4572e;
+
+}
