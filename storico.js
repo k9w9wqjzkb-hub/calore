@@ -18,6 +18,28 @@ Luglio 2026
 
 let letturaInModifica = null;
 
+function popolaFiltroCaloriferi() {
+
+    const select = document.getElementById("filtroCalorifero");
+
+    if (!select) return;
+
+    const db = getDB();
+
+    select.innerHTML = `<option value="">Tutti i caloriferi</option>`;
+
+    db.caloriferi.forEach(c => {
+
+        const option = document.createElement("option");
+
+        option.value = c.id;
+        option.textContent = `${c.nome} (${c.stanza})`;
+
+        select.appendChild(option);
+
+    });
+
+}
 
 /*==================================================
     02 - INIZIALIZZAZIONE

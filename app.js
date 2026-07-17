@@ -391,25 +391,6 @@ function getLettureFiltrate({ caloriferoId , stanza } = {}) {
     .sort((a, b) => new Date(b.data) - new Date(a.data));
 }
 
-
-/* =================================================
-    10 - STORICO
-==================================================*/
-function popolaFiltroCaloriferi() {
-  const select = document.getElementById("filtroCalorifero");
-  if (!select) return;
-
-  const db = getDB();
-  select.innerHTML = `<option value="">Tutti i caloriferi</option>`;
-
-  db.caloriferi.forEach(c => {
-    const option = document.createElement("option");
-    option.value = c.id;
-    option.textContent = `${c.nome} (${c.stanza})`;
-    select.appendChild(option);
-  });
-}
-
 /*==================================================
     11 - BACKUP / RIPRISTINO
 ==================================================*/
