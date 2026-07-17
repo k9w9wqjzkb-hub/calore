@@ -690,9 +690,9 @@ h2 {
   z-index: 5;
   background: #ffffff;
   display: grid;
-  grid-template-columns: 130px 100px 100px 70px;
-  gap: 6px;
-  padding: 8px 12px;
+  grid-template-columns: 85px minmax(90px,1fr) 55px 50px;
+  gap: 4px;
+  padding: 8px;
   font-size: 12px;
   font-weight: 600;
   color: #444;
@@ -710,13 +710,13 @@ h2 {
 
 .list-row {
   display: grid;
-  grid-template-columns: 130px 100px 100px 70px;
-  gap: 6px;
-  padding: 8px 10px;
+  grid-template-columns: 85px minmax(90px,1fr) 55px 50px;
+  gap: 4px;
+  padding: 8px;
   align-items: center;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
   font-size: 12px;
 }
 
@@ -735,22 +735,41 @@ h2 {
   text-align: right;
 }
 
-.actions button { 
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 4px;
+.actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:2px;
+}
+
+.actions button{
+    width:20px;
+    height:20px;
+    padding:0;
+    margin:0;
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:14px;
+    line-height:1;
 }
 
 /* ================= RESPONSIVE GRID (iPhone SAFE) ================= */
-@media (max-width: 480px) {
-  .list-header,
-  .list-row {
-    grid-template-columns: 1.2fr 1fr 0.8fr 0.7fr;
-  }
+
+@media (max-width:480px){
+
+.list-header,
+.list-row{
+    grid-template-columns:72px minmax(70px,1fr) 48px 42px;
+    gap:3px;
+    padding:6px;
 }
 
+.actions button{
+    font-size:13px;
+}
+
+}
 /* ================= FILTRO ================= */
 .filter { 
   margin: 12px 0; 
@@ -800,10 +819,10 @@ h2 {
 .modal.hidden { display: none; }
 .modal-content { 
   background: #faf7f5; 
-  padding: 20px; 
-  border-radius: 16px; 
+  padding: 16px; 
+  border-radius: 20px; 
   width: 90%; 
-  max-width: 360px; 
+  max-width: 340px; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
 }
 .modal-content h3 { 
@@ -812,23 +831,23 @@ h2 {
 }
 .modal-content label { 
   display: block; 
-  font-size: 13px; 
-  margin-top: 12px; 
+  font-size: 12px; 
+  margin-top: 8px; 
   color: #555; 
 }
 .modal-content input,
 .modal-content select { 
   width: 100%; 
-  padding: 10px; 
+  padding: 8px10px; 
   border-radius: 12px; 
   border: 1px solid #ccc; 
   margin-top: 4px; 
-  font-size: 14px; 
+  font-size: 15px; 
 }
 .modal-actions { 
   display: flex; 
   gap: 12px; 
-  margin-top: 20px; 
+  margin-top: 14px; 
 }
 .modal-actions button { 
   flex: 1; 
