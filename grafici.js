@@ -8,37 +8,6 @@ const ctxStanza = document.getElementById("chartStanza").getContext("2d");
 let chartAnno;
 let chartStanza;
 
-// ================= CONSUMI REALI =================
-
-function calcolaConsumiPerCalorifero(caloriferoId) {
-
-    const db = getDB();
-
-    const letture = db.letture
-        .filter(l => l.caloriferoId === caloriferoId)
-        .sort((a, b) => new Date(a.data) - new Date(b.data));
-
-    const consumi = [];
-
-    letture.forEach((l, i) => {
-
-        let consumo = i === 0
-            ? Number(l.valore)
-            : Number(l.valore) - Number(letture[i - 1].valore);
-
-        if (consumo < 0) consumo = 0;
-
-        consumi.push({
-            data: l.data,
-            consumo,
-            stanza: l.stanza
-        });
-
-    });
-
-    return consumi;
-
-}
 
 // ================= ULTIMI 5 ANNI =================
 
