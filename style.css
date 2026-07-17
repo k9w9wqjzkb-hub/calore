@@ -691,7 +691,10 @@ h2 {
   background: #ffffff;
   display: grid;
   grid-template-columns: 85px minmax(90px,1fr) 55px 50px;
+
   gap: 4px;
+  column-gap: 8px;
+
   padding: 8px;
   font-size: 12px;
   font-weight: 600;
@@ -730,6 +733,7 @@ h2 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color:#e4572e;
   gap: 6px;
   font-weight: 600;
   text-align: right;
@@ -739,34 +743,52 @@ h2 {
     display:flex;
     justify-content:flex-end;
     align-items:center;
-    gap:2px;
+    gap:6px;
 }
 
 .actions button{
-    width:20px;
-    height:20px;
+    width:22px;
+    height:22px;
     padding:0;
     margin:0;
     border:none;
     background:none;
-    cursor:pointer;
-    font-size:14px;
-    line-height:1;
+    font-size:15px;
 }
 
 /* ================= RESPONSIVE GRID (iPhone SAFE) ================= */
 
 @media (max-width:480px){
 
-.list-header,
-.list-row{
-    grid-template-columns:72px minmax(70px,1fr) 48px 42px;
-    gap:3px;
-    padding:6px;
+.actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:8px;
 }
 
 .actions button{
-    font-size:13px;
+    width:22px;
+    height:22px;
+    padding:0;
+    margin:0;
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:15px;
+    transition:.15s;
+}
+
+.actions button{
+    width:22px;
+    height:22px;
+    padding:0;
+    margin:0;
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:15px;
+    transition:.15s;
 }
 
 }
