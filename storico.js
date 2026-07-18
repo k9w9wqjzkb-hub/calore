@@ -106,8 +106,6 @@ function renderStoricoAttivo() {
 
     });
 
-    aggiornaStatistiche();
-
 }
 
 /*==================================================
@@ -115,6 +113,7 @@ function renderStoricoAttivo() {
 ==================================================*/
 
 function modificaLettura(id) {
+    console.log("MODIFICA", id);
 
     const db = getDB();
 
@@ -199,8 +198,6 @@ function salvaModificaLettura() {
 
     renderStoricoAttivo();
 
-    aggiornaStatistiche();
-
 }
 
 /*==================================================
@@ -208,6 +205,7 @@ function salvaModificaLettura() {
 ==================================================*/
 
 function cancellaLettura(id) {
+    console.log("CANCELLA", id);
 
     const db = getDB();
 
@@ -256,43 +254,8 @@ function cancellaLettura(id) {
 
             renderStoricoAttivo();
 
-            aggiornaStatistiche();
 
         }
-    );
-
-}
-
-/*==================================================
-    06 - STATISTICHE
-==================================================*/
-
-function aggiornaStatistiche() {
-
-    aggiornaElemento(
-        "statTotaleLetture",
-        getNumeroLetture()
-    );
-
-    aggiornaElemento(
-        "statConsumoTotale",
-        formatUnita(getTotaleConsumi())
-    );
-
-    aggiornaElemento(
-        "statMedia",
-        getMediaConsumi().toLocaleString(LOCALE, {
-            maximumFractionDigits: 1
-        })
-    );
-
-    const ultima = getUltimaLetturaRegistrata();
-
-    aggiornaElemento(
-        "statUltima",
-        ultima
-            ? formatDisplay(ultima.valore)
-            : "0"
     );
 
 }

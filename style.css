@@ -330,6 +330,43 @@ h2 {
     10 - MODALI
 ==================================================*/
 
+/* Struttura */
+.modal{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.45);
+    z-index:9999;
+}
+
+.modal.hidden{
+    display:none;
+}
+
+.modal-content{
+    width:min(92%,420px);
+    background:#faf7f5;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+    animation:modalShow .18s ease;
+}
+
+/* Animazione */
+@keyframes modalShow{
+    from{
+        opacity:0;
+        transform:scale(.94);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Pulsanti conferma */
 .confirm-buttons{
     display:flex;
     justify-content:flex-end;
@@ -374,6 +411,7 @@ h2 {
     margin:16px 0;
 }
 
+/* Stili specifici della conferma */
 .confirm-info{
     margin-bottom:18px;
 }

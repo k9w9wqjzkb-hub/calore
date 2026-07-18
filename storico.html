@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Storico Letture</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="modals.css">
 
 </head>
 
@@ -26,43 +27,24 @@
 
 <main class="container">
 
-<h2>📖 Storico letture</h2>
-<p>Consulta, modifica o elimina le letture registrate.</p>
+  <h2>📖 Storico letture</h2>
+  <p>Consulta, modifica o elimina le letture registrate.</p>
 
-<div class="filter">
-  <select id="filtroCalorifero">
-    <option value="">Tutti i caloriferi</option>
-  </select>
-</div>
+    <div class="filter">
+      <select id="filtroCalorifero">
+      <option value="">Tutti i caloriferi</option>
+      </select>
+    </div>
 
-<div class="storico-wrapper">
-  <div class="list-header">
-    <div>Data</div>
-    <div>Stanza</div>
-    <div class="value-col">Valore</div>
-    <div</div>
-  </div>
-  <div class="list-card"></div>
-</div>
-
-<div class="stats-grid">
-  <div class="stat-card">
-    <span>Totale Letture</span>
-    <b id="statTotaleLetture">0</b>
-  </div>
-  <div class="stat-card">
-    <span>Consumo Totale</span>
-    <b id="statConsumoTotale">0</b>
-  </div>
-  <div class="stat-card">
-    <span>Media</span>
-    <b id="statMedia">0</b>
-  </div>
-  <div class="stat-card">
-    <span>Ultima</span>
-    <b id="statUltima">0</b>
-  </div>
-</div>
+    <div class="storico-wrapper">
+      <div class="list-header">
+      <div>Data</div>
+      <div>Stanza</div>
+      <div class="value-col">Valore</div>
+      <div>Azioni</div>
+    </div>
+      <div class="list-card"></div>
+    </div>
 
 </main>
 
