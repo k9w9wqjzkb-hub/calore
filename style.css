@@ -25,6 +25,8 @@ body {
   background: #faf7f5;
   color: #1c1c1e;
   line-height: 1.4;
+
+  overflow-x: hidden;
 }
 html, body {
   touch-action: manipulation;

@@ -31,13 +31,14 @@
 
 .card-total{
 
-    min-height:155px;
+    grid-column:1 / -1;
+
+    min-height:145px;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:space-between;
+
 }
 
 .card-title{
@@ -64,14 +65,14 @@
 
 .stats-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin:24px 0;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin:20px 0;
 }
 
 .big-number{
-    font-size:42px;
-    font-weight:700;
+    font-size:30px;
+    font-weight:500;
     line-height:1;
 }
 
@@ -87,13 +88,12 @@
 
 .card-small{
 
-    display:flex;
+    min-height:105px;
 
+    display:flex;
+    flex-direction:column;
     justify-content:space-between;
 
-    align-items:center;
-
-    min-height:155px;
 }
 
 .card-total .big-number{
@@ -159,4 +159,69 @@
     color:var(--text-light);
 
     font-weight:600;
+}
+
+.card-header{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+.card-header i{
+
+    font-size:20px;
+    color:var(--primary);
+
+}
+
+.card-header span{
+
+    font-size:15px;
+    font-weight:600;
+
+}
+
+.card-center{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.card-center .number{
+
+    font-size:48px;
+    font-weight:700;
+    line-height:1;
+
+}
+
+.card-small .card-center .number{
+
+    font-size:32px;
+    font-weight:700;
+    line-height:1;
+
+}
+
+.card-header{
+
+    margin-bottom:6px;
+
+}
+
+.card-total .number{
+    color: var(--primary);
+}
+
+.card-small .number{
+    color: var(--text);
 }

@@ -3,73 +3,79 @@
 ========================== */
 
 .app-header{
+
     position:sticky;
-    top:16px;
+    top:12px;
     z-index:1000;
 
     display:flex;
     align-items:center;
 
-    width:min(100% - 32px,1200px);
-    margin:16px auto;
-    padding:0 24px;
+    width:calc(100% - 24px);
+    margin:12px auto;
 
-    height:90px;
+    padding:0 16px;
+
+    height:76px;
 
     background:#fff;
 
+    border-radius:28px;
+
     border:1px solid rgba(0,0,0,.05);
 
-    border-radius:30px;
-
     box-shadow:
-        0 8px 30px rgba(0,0,0,.06),
+        0 8px 24px rgba(0,0,0,.06),
         0 2px 8px rgba(0,0,0,.03);
 }
 
 .app-title{
+
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:12px;
 
-    min-width:220px;
+    flex-shrink:0;
 
-    font-size:30px;
+    font-size:24px;
     font-weight:700;
+
     color:#222;
 }
 
 .app-title span:first-child{
-    font-size:46px;
+    font-size:40px;
 }
 
 .nav-icons{
+
     flex:1;
 
     display:flex;
-    justify-content:space-evenly;
+
+    justify-content:space-around;
+
     align-items:center;
+
+    margin-left:18px;
+
 }
 
 .nav-icons a{
-    position:relative;
 
-    width: 60px;
-    height:60px;
+    width:44px;
+    height:44px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    border-radius:12px;
 
-    border-radius:16px;
+    font-size:24px;
 
-    text-decoration:none;
+}
 
-    font-size:30px;
+.nav-icons i{
 
-    color:#444;
+    font-size:28px;
 
-    transition:.25s;
 }
 
 .nav-icons a:hover{
@@ -81,17 +87,13 @@
 }
 
 .nav-icons a.active::after{
-    content:"";
 
-    position:absolute;
+    bottom:-7px;
 
-    bottom:-10px;
-    left:8px;
-    right:8px;
+    left:6px;
 
-    height:4px;
+    right:6px;
 
-    border-radius:30px;
+    height:3px;
 
-    background:#f55a18;
 }
