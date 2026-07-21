@@ -1,0 +1,49 @@
+:root{
+
+    /* ===== COLORI ===== */
+
+    --primary:#F97316;
+    --primary-dark:#EA580C;
+    --primary-light:#FFF4EC;
+
+    --background:#F6F7FB;
+    --surface:#FFFFFF;
+
+    --text:#1F2937;
+    --text-light:#6B7280;
+
+    --border:#E5E7EB;
+
+    --success:#16A34A;
+    --warning:#F59E0B;
+    --danger:#DC2626;
+
+
+    /* ===== OMBRE ===== */
+
+    --shadow-sm:0 2px 6px rgba(0,0,0,.05);
+    --shadow-md:0 8px 20px rgba(0,0,0,.08);
+
+
+    /* ===== BORDI ===== */
+
+    --radius-sm:12px;
+    --radius-md:18px;
+    --radius-lg:24px;
+
+
+    /* ===== SPAZIATURE ===== */
+
+    --page-padding:18px;
+    --gap:16px;
+
+
+    /* ===== HEADER ===== */
+
+    --header-height:72px;
+
+
+    /* ===== TRANSIZIONI ===== */
+
+    --transition:.25s ease;
+}

@@ -1,0 +1,97 @@
+/* ==========================
+   TOPBAR - CALORE 2.0
+========================== */
+
+.app-header{
+    position:sticky;
+    top:16px;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+
+    width:min(100% - 32px,1200px);
+    margin:16px auto;
+    padding:0 24px;
+
+    height:90px;
+
+    background:#fff;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.06),
+        0 2px 8px rgba(0,0,0,.03);
+}
+
+.app-title{
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    min-width:220px;
+
+    font-size:30px;
+    font-weight:700;
+    color:#222;
+}
+
+.app-title span:first-child{
+    font-size:46px;
+}
+
+.nav-icons{
+    flex:1;
+
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+
+.nav-icons a{
+    position:relative;
+
+    width: 60px;
+    height:60px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    font-size:30px;
+
+    color:#444;
+
+    transition:.25s;
+}
+
+.nav-icons a:hover{
+    color:#f55a18;
+}
+
+.nav-icons a.active{
+    color:#f55a18;
+}
+
+.nav-icons a.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-10px;
+    left:8px;
+    right:8px;
+
+    height:4px;
+
+    border-radius:30px;
+
+    background:#f55a18;
+}

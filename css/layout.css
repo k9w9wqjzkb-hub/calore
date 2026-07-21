@@ -1,0 +1,53 @@
+/* ===========================
+   Layout Generale
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    min-height:100vh;
+}
+
+
+/* contenitore principale */
+
+.page{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:var(--page-padding);
+
+}
+
+
+/* spazio tra gli elementi */
+
+.section{
+
+    margin-top:20px;
+
+}

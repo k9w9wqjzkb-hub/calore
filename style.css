@@ -8,7 +8,10 @@ Anno     : 2026
 Foglio di stile principale
 
 ==================================================*/
-
+@import url("css/variables.css");
+@import url("css/layout.css");
+@import url("css/cards.css");
+@import url("css/topbar.css");
  /*==================================================
      01 - RESET
  ==================================================*/
@@ -37,7 +40,6 @@ input, select, textarea {
  ==================================================*/
 .container {
   padding: 20px;
-  padding-top: 76px;
 }
 
 .hidden {
@@ -199,37 +201,11 @@ h2 {
  /*==================================================
      07 - CARD COMUNI
  ==================================================*/
-/* Card standard dell'app */
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-small {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .icon, .icon-gray {
   background: #fde6df;
   padding: 10px;
   border-radius: 12px;
-}
-
-.card-total .big-number {
-  font-size: 42px;
-  font-weight: 600;
-  color: #e4572e;
-  margin-top: 12px;
 }
 
 /***** Card Anno Termico *****/
@@ -712,12 +688,7 @@ h2 {
 }
 
 /* ================= STATISTICHE ================= */
-.stats-grid { 
-  display: grid; 
-  grid-template-columns: repeat(2,1fr); 
-  gap: 10px; 
-  margin-top: 16px; 
-}
+
 .stat-card { 
   background: #fff; 
   padding: 12px; 
@@ -819,3 +790,4 @@ h2 {
     color:#e4572e;
 
 }
+

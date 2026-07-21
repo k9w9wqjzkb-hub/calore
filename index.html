@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-<meta charset="UTF-8">
-<!-- 🔑 QUESTO È FONDAMENTALE -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Dashboard</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="modals.css">
+  <head>
+    <meta charset="UTF-8">
+    <!-- 🔑 QUESTO È FONDAMENTALE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+      <title>Calore 2.0</title>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="modals.css">
 <link rel="apple-touch-icon" href="icons/caloriferi-512.png">
 <link rel="manifest" href="manifest.json">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Caloriferi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -17,21 +20,44 @@
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-left">
-    <div class="logo">🔥</div>
-    <span class="app-name">Calore</span>
-  </div>
-  <div class="topbar-right">
-    <button class="icon-btn active" onclick="location.href='index.html'">🏠</button>
-    <button class="icon-btn" onclick="location.href='caloriferi.html'">♨️</button>
-    <button class="icon-btn" onclick="location.href='storico.html'">🕘</button>
-    <button class="icon-btn" onclick="location.href='grafici.html'">📊</button>
-    <button class="icon-btn" onclick="location.href='ripartizione.html'">📋</button>
-  </div>
+<header class="app-header">
+
+    <div class="app-title">
+        <span>🔥</span>
+        <span>Calore</span>
+    </div>
+
+    <nav class="nav-icons">
+
+    <a href="index.html" class="active" title="Dashboard">
+        <i class="bi bi-house-door"></i>
+    </a>
+
+    <a href="caloriferi.html" title="Caloriferi">
+        <i class="bi bi-thermometer-half"></i>
+    </a>
+
+    <a href="storico.html" title="Storico">
+        <i class="bi bi-clock-history"></i>
+    </a>
+
+    <a href="grafici.html" title="Grafici">
+        <i class="bi bi-bar-chart"></i>
+    </a>
+
+    <a href="ripartizione.html" title="Ripartizione">
+        <i class="bi bi-clipboard-data"></i>
+    </a>
+
+    <a href="impostazioni.html" title="Impostazioni">
+        <i class="bi bi-gear"></i>
+    </a>
+
+</nav>
+
 </header>
 
-<main class="container">
+  <main class="container">
     
     <div class="card-anno">
         <span class="label">🔥 Anno termico</span>
@@ -40,53 +66,64 @@
 
   <!-- HEADER DASHBOARD -->
 
-  <div class="dashboard-header">
-    <div class="dashboard-title">
-      <h1>Dashboard</h1>
-      <p>Monitora i consumi dei tuoi caloriferi</p>
-    </div>
     <div class="dashboard-action">
-      <button class="btn-pill" onclick="apriLetturaSheet()">📝 Registra lettura mensile</button>
+      <button class="btn-pill" onclick="apriLetturaSheet()">
+        📝 Registra lettura mensile
+      </button>
     </div>
-  </div>
 
   <!-- CARDS TOTALI -->
+    <div class="stats-grid">
 
-  <div class="card card-total">
-    <div class="card-top">
-      <span>Consumo Totale</span>
-      <div class="icon">🔥</div>
-    </div>
-    <div class="big-number" id="totaleConsumi">0</div>
-    <span class="unit">unità</span>
-  </div>
+    <!-- Consumo Totale -->
+    <div class="card card-total">
+        <div class="card-top">
+            <span>Consumo Totale</span>
+            <div class="icon">
+              <i class="bi bi-fire"></i>
+            </div>
+        </div>
 
-  <div class="card card-small">
-    <div>
-      <span class="label">Caloriferi</span>
-      <div class="small-number" id="numeroCaloriferi">0</div>
+        <div class="big-number" id="totaleConsumi">0</div>
+        <span class="unit">unità</span>
     </div>
-    <div class="icon-gray">♨️</div>
-  </div>
 
-  <div class="card card-small">
-    <div>
-      <span class="label">Letture</span>
-      <div class="small-number" id="numeroLetture">0</div>
+    <!-- Caloriferi -->
+    <div class="card card-small">
+        <div>
+            <span class="label">Caloriferi</span>
+            <div class="small-number" id="numeroCaloriferi">0</div>
+        </div>
+
+        <div class="icon-gray">
+          <i class="bi bi-thermometer-half"></i>
+        </div>
     </div>
-    <div class="icon-gray">📄</div>
-  </div>
+
+    <!-- Letture -->
+    <div class="card card-small">
+        <div>
+            <span class="label">Letture</span>
+            <div class="small-number" id="numeroLetture">0</div>
+        </div>
+
+        <div class="icon-gray">
+          <i class="bi bi-journal-text"></i>
+        </div>
+    </div>
+
+</div>
 
   <!-- CARD GRAFICO CONSUMI-->
-  <div class="card">
-    <h3>Andamento Consumi Mensili</h3>
-    <canvas id="consumiChart" height="180"></canvas>
-  </div>
+    <div class="card">
+      <h3>Andamento Consumi Mensili</h3>
+      <canvas id="consumiChart" height="180"></canvas>
+    </div>
 
   <!-- CARD CONSUMI PER STANZA -->
-  <div class="card" id="consumiPerStanza">
-    <h3>Consumi per Stanza</h3>
-  </div>
+    <div class="card" id="consumiPerStanza">
+      <h3>Consumi per Stanza</h3>
+    </div>
 
   <!-- BACKUP -->
 
@@ -110,8 +147,8 @@
      class="sheet-overlay hidden"
      onclick="chiudiLetturaSheet()"></div>
 
-<!-- SHEET NUOVA LETTURA -->
-<div id="letturaSheet" class="sheet hidden">
+  <!-- SHEET NUOVA LETTURA -->
+  <div id="letturaSheet" class="sheet hidden">
   <div class="sheet-header">
     <h2>Nuova Lettura</h2>
     <button class="close-btn"
@@ -121,7 +158,7 @@
     <label>Calorifero</label>
     <select id="letturaCalorifero"></select>
 
-<div class="ultima-lettura">
+  <div class="ultima-lettura">
 
     <div class="ultima-title">
         Ultima lettura registrata
@@ -156,8 +193,11 @@
     <button class="btn-pill" onclick="salvaLettura()">
         Registra
     </button>
+    </div> <!-- sheet-actions -->
 
-</div>
+  </div> <!-- sheet-actions -->
+
+</div> <!-- letturaSheet -->
 
 <!-- JS -->
 <script src="version.js"></script>
@@ -165,14 +205,19 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="modals.js"></script>
 <script src="dashboard.js"></script>
+
+
 <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log('Service Worker attivo su:', reg.scope))
-        .catch(err => console.error('Errore SW:', err));
-    });
-  }
+window.addEventListener("load", () => {
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('Service Worker attivo su:', reg.scope))
+            .catch(err => console.error('Errore SW:', err));
+    }
+
+});
 </script>
+
 </body>
 </html>

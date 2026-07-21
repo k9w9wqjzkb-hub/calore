@@ -1,0 +1,11 @@
+.dashboard-actions{
+    display:flex;
+    justify-content:flex-end;
+    margin:18px 0 22px;
+}
+
+.btn-primary{
+    min-height:54px;
+    padding:0 28px;
+    border-radius:28px;
+}
