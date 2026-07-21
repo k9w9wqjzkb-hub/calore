@@ -33,7 +33,7 @@
 
     grid-column:1 / -1;
 
-    min-height:145px;
+    min-height:120px;
 
     display:flex;
     flex-direction:column;
@@ -66,7 +66,7 @@
 .stats-grid{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:16px;
+    gap:8px;
     margin:20px 0;
 }
 
@@ -88,7 +88,7 @@
 
 .card-small{
 
-    min-height:105px;
+    min-height:80px;
 
     display:flex;
     flex-direction:column;
