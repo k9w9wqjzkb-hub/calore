@@ -7,11 +7,11 @@
 
     border:1px solid rgba(0,0,0,.05);
 
-    border-radius:24px;
+    border-radius:20px;
 
-    padding:18px;
+    padding:var(--space-lg);
 
-    margin-bottom:12px;
+    margin-bottom:var(--space-md);
 
     box-shadow:
         0 8px 24px rgba(0,0,0,.05),
@@ -66,8 +66,8 @@
 .stats-grid{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-    margin:10px 0;
+    gap:var(--space-sm);
+    margin:var(--space-md) 0;
 }
 
 .big-number{
@@ -165,7 +165,7 @@
 
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:var(--space-sm);
 
 }
 
@@ -247,13 +247,13 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:16px;
+    margin-bottom:var(--space-md);
 }
 
 .rooms-grid{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px;
+    gap:var(--space-sm);
 }
 
 .room-item{
@@ -261,7 +261,7 @@
     align-items:center;
     gap:12px;
 
-    padding:10px 12px;
+    padding:10px var(--space-md);
 
     background:var(--surface);
 

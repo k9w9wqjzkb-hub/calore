@@ -217,7 +217,7 @@ h2 {
     border: 1px solid #e5e5e5;
     border-radius: 18px;
     padding: 8px 14px;
-    margin-bottom: 12px;
+    margin-bottom:var(--space-md);
 }
 
 .card-anno .big-number {

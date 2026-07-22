@@ -47,3 +47,21 @@
 
     --transition:.25s ease;
 }
+
+/* ===========================
+   SPAZIATURE
+=========================== */
+
+:root{
+
+    --space-xs:4px;
+
+    --space-sm:6px;
+
+    --space-md:8px;
+
+    --space-lg:14px;
+
+    --space-xl:20px;
+
+}
