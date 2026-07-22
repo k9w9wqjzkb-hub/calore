@@ -65,3 +65,23 @@
     --space-xl:20px;
 
 }
+
+/* ===========================
+   TIPOGRAFIA
+=========================== */
+
+:root{
+
+    --font-xs:14px;
+
+    --font-sm:15px;
+
+    --font-md:17px;
+
+    --font-lg:20px;
+
+    --font-xl:32px;
+
+    --font-xxl:52px;
+
+}

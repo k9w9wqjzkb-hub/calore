@@ -257,20 +257,25 @@
 }
 
 .room-item{
+
     display:flex;
     align-items:center;
-    gap:12px;
+    justify-content:space-between;
 
-    padding:10px var(--space-md);
+
+    padding:8px var(--space-md);
+
+    min-height:46px;
 
     background:var(--surface);
 
     border:1px solid rgba(0,0,0,.05);
 
-    border-radius:16px;
+    border-radius:14px;
 
     transition:all .25s ease;
-}
+
+}    
 
 .room-item:hover{
 
@@ -283,6 +288,7 @@
 }
 
 .room-icon{
+    display:none;
 
     width:40px;
     height:40px;
@@ -329,7 +335,7 @@
 
 .room-value{
 
-    font-size:20px;
+    font-size:17px;
 
     font-weight:700;
 
