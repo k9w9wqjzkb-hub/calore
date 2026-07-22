@@ -1,7 +1,11 @@
 .dashboard-actions{
+
     display:flex;
-    justify-content:flex-star;
-    margin:10px 0 14px;
+
+    justify-content:flex-end;
+
+    margin:8px 0;
+
 }
 
 .btn-primary{

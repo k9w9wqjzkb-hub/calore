@@ -87,54 +87,19 @@ function renderConsumiPerStanzaCard() {
 
             card.className = "room-item";
 
-            card.innerHTML = `
-                <div class="room-icon">
-                    <span class="material-symbols-rounded">
-                        ${getRoomIcon(stanza)}
-                    </span>
-                </div>
-
-                <div class="room-content">
+                card.innerHTML = `
                     <div class="room-name">${stanza}</div>
-                </div>
 
-                <div class="room-value">
-                    ${formatUnita(consumi[stanza])}
-                </div>
-            `;
-
+                    <div class="room-value">
+                         ${formatUnita(consumi[stanza])}
+                    </div>
+                `;  
             grid.appendChild(card);
 
         });
 
 }
 
-function getRoomIcon(stanza){
-
-    const nome = stanza.toLowerCase();
-
-    if(nome.includes("soggiorno")) return "weekend";
-
-    if(nome.includes("cucina")) return "kitchen";
-
-    if(nome.includes("camera")) return "bed";
-
-    if(nome.includes("bagno")) return "bathtub";
-
-    if(nome.includes("anticamera")) return "door_front";
-
-    if(nome.includes("ingresso")) return "door_front";
-
-    if(nome.includes("corridoio")) return "door_front";
-
-    if(nome.includes("studio")) return "desk";
-
-    if(nome.includes("lavanderia")) return "local_laundry_service";
-
-    if(nome.includes("ripostiglio")) return "inventory_2";
-
-    return "home";
-}
 
 /*==================================================
     GRAFICO CONSUMI MENSILI

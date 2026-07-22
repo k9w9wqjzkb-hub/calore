@@ -244,10 +244,13 @@
 =========================== */
 
 .rooms-header{
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    margin-bottom:var(--space-md);
+    justify-content:space-between;
+
+    margin-bottom:6px;
+
 }
 
 .rooms-grid{
@@ -262,20 +265,17 @@
     align-items:center;
     justify-content:space-between;
 
+    min-height:40px;
 
-    padding:8px var(--space-md);
+    padding:6px 12px;
 
-    min-height:46px;
+    border-radius:12px;
 
     background:var(--surface);
 
     border:1px solid rgba(0,0,0,.05);
 
-    border-radius:14px;
-
-    transition:all .25s ease;
-
-}    
+}
 
 .room-item:hover{
 
@@ -323,19 +323,15 @@
 
     font-size:15px;
 
-    font-weight:600;
+    font-weight:500;
 
     color:var(--text);
-
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
 
 }
 
 .room-value{
 
-    font-size:17px;
+    font-size:15px;
 
     font-weight:700;
 

@@ -40,8 +40,8 @@ input, select, textarea {
  /*==================================================
      02 - LAYOUT
  ==================================================*/
-.container {
-  padding: 20px;
+.container{
+    padding:12px 20px 20px;
 }
 
 .hidden {
@@ -216,8 +216,8 @@ h2 {
     background: transparent;
     border: 1px solid #e5e5e5;
     border-radius: 18px;
-    padding: 8px 14px;
-    margin-bottom: 12px;
+    padding: 6px 14px;
+    margin-bottom: var(--space-md);
 }
 
 .card-anno .big-number {
@@ -231,13 +231,13 @@ h2 {
 
 .card-anno .label {
     color: #8e8e93;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
 }
 
 .card-anno .value {
     color: #e4572e;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
 }
 
