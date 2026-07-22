@@ -65,32 +65,75 @@ function renderTotali() {
 function renderConsumiPerStanzaCard() {
 
     const container = document.getElementById("consumiPerStanza");
-
     if (!container) return;
 
     const consumi = getConsumiPerStanza();
 
-    container.innerHTML = "<h3>Consumi per Stanza</h3>";
+    container.innerHTML = `
+        <div class="rooms-header">
+            <h3>Unità per stanza</h3>
+        </div>
+
+        <div class="rooms-grid"></div>
+    `;
+
+    const grid = container.querySelector(".rooms-grid");
 
     Object.keys(consumi)
         .sort()
         .forEach(stanza => {
 
-            const row = document.createElement("div");
+            const card = document.createElement("div");
 
-            row.className = "row";
+            card.className = "room-item";
 
-            row.innerHTML = `
-                <span class="pill">${stanza}</span>
-                <span class="value">
+            card.innerHTML = `
+                <div class="room-icon">
+                    <span class="material-symbols-rounded">
+                        ${getRoomIcon(stanza)}
+                    </span>
+                </div>
+
+                <div class="room-content">
+                    <div class="room-name">${stanza}</div>
+                </div>
+
+                <div class="room-value">
                     ${formatUnita(consumi[stanza])}
-                </span>
+                </div>
             `;
 
-            container.appendChild(row);
+            grid.appendChild(card);
 
         });
 
+}
+
+function getRoomIcon(stanza){
+
+    const nome = stanza.toLowerCase();
+
+    if(nome.includes("soggiorno")) return "weekend";
+
+    if(nome.includes("cucina")) return "kitchen";
+
+    if(nome.includes("camera")) return "bed";
+
+    if(nome.includes("bagno")) return "bathtub";
+
+    if(nome.includes("anticamera")) return "door_front";
+
+    if(nome.includes("ingresso")) return "door_front";
+
+    if(nome.includes("corridoio")) return "door_front";
+
+    if(nome.includes("studio")) return "desk";
+
+    if(nome.includes("lavanderia")) return "local_laundry_service";
+
+    if(nome.includes("ripostiglio")) return "inventory_2";
+
+    return "home";
 }
 
 /*==================================================

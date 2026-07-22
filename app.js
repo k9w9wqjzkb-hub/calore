@@ -74,6 +74,24 @@ function aggiornaElemento(id, valore) {
 
 }
 
+function getRoomIcon(stanza){
+
+    const nome = stanza.toLowerCase();
+
+    if(nome.includes("soggiorno")) return "weekend";
+    if(nome.includes("cucina")) return "kitchen";
+    if(nome.includes("camera")) return "bed";
+    if(nome.includes("bagno")) return "bathtub";
+    if(nome.includes("anticamera")) return "door_front";
+    if(nome.includes("ingresso")) return "door_front";
+    if(nome.includes("corridoio")) return "door_front";
+    if(nome.includes("studio")) return "desk";
+    if(nome.includes("lavanderia")) return "local_laundry_service";
+    if(nome.includes("ripostiglio")) return "inventory_2";
+
+    return "home";
+}
+
 /*==================================================
     04 - FORMATTAZIONE
 ==================================================*/
