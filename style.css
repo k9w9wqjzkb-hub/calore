@@ -438,7 +438,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 12px 16px;
+  padding: 8px 14px;
 }
 
 #consumiPerStanza h3 {
