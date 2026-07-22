@@ -1,12 +1,17 @@
 .dashboard-actions{
-
     display:flex;
-
     justify-content:flex-end;
-
+    align-items:center;
+    width:100%;
     margin:8px 0;
-
 }
+
+ .page-action .btn-pill,
+  .dashboard-actions .btn-pill {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
 
 .btn-primary{
     min-height:54px;

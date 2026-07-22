@@ -77,12 +77,6 @@ input, select, textarea {
   color: #555;
 }
 
-.dashboard-action,
-.page-action {
-  flex: 0 0 auto;     /* il bottone NON si muove */
-  white-space: nowrap;
-}
-
  /*==================================================
      04 - TOPBAR
  ==================================================*/
@@ -558,12 +552,7 @@ h2 {
  ==================================================*/
   
 @media (max-width: 480px) {
-  .page-action .btn-pill,
-  .dashboard-action .btn-pill {
-    padding: 6px 10px;
-    font-size: 0.85rem;
-  }
-
+ 
   .dashboard-title h1,
   .page-title h1 {
     font-size: 1.4rem;

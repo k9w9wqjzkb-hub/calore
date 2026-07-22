@@ -231,7 +231,7 @@
 =========================== */
 
 .chart-card{
-    padding:16px;
+    padding:14px;
 }
 
 .chart-card canvas{
@@ -265,15 +265,15 @@
     align-items:center;
     justify-content:space-between;
 
-    min-height:40px;
+    min-height:38px;
 
-    padding:6px 12px;
+    padding: 5px 12px;
 
     border-radius:12px;
 
-    background:var(--surface);
-
     border:1px solid rgba(0,0,0,.05);
+
+    background:var(--surface);
 
 }
 
@@ -321,7 +321,7 @@
 
 .room-name{
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:500;
 
@@ -331,7 +331,7 @@
 
 .room-value{
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:700;
 
