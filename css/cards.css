@@ -98,15 +98,15 @@
 
 .card-total .big-number{
 
-    font-size:52px;
+    font-size:44px;
 
-    font-weight:800;
+    font-weight:700;
 
     color:var(--primary);
 
-    letter-spacing:-1px;
+    letter-spacing:-0.5px;
 
-    margin-top:4px;
+    margin-top:6px;
 
     line-height:1;
 }
@@ -171,14 +171,19 @@
 
 .card-header i{
 
-    font-size:20px;
-    color:var(--primary);
+    width:18px;
+    height:18px;
 
+    color:currentColor;
+
+    stroke-width:2;
+
+    flex-shrink:0;
 }
 
 .card-header span{
 
-    font-size:15px;
+    font-size:16px;
     font-weight:600;
 
 }
@@ -196,9 +201,8 @@
 
 }
 
-.card-center .number{
-
-    font-size:48px;
+.card-total .card-center .number{
+    font-size:40px;
     font-weight:700;
     line-height:1;
 
@@ -284,26 +288,6 @@
 
 }
 
-.room-icon{
-    display:none;
-
-    width:40px;
-    height:40px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    flex-shrink:0;
-
-    border-radius:12px;
-
-    background:rgba(245,90,24,.10);
-
-    color:var(--primary);
-
-}
-
 .room-icon .material-symbols-rounded{
 
     font-size:20px;
@@ -357,4 +341,18 @@
 
     padding:0;
 
+}
+
+.room-name{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.room-name i{
+    width:16px;
+    height:16px;
+    color:#222;
+    stroke-width:2;
+    flex-shrink:0;
 }

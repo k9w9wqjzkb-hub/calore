@@ -1,0 +1,174 @@
+/* ==================================================
+   HEADER PAGINA
+================================================== */
+
+.page-title .card-title{
+    margin-bottom:6px;
+}
+
+.page-title .card-title i{
+    color:var(--primary);
+}
+
+/* ==================================================
+   ELENCO CALORIFERI
+================================================== */
+
+#caloriferiContainer{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:20px;
+}
+
+.room{
+    display:block;
+    margin:0;
+    padding:0;
+}
+
+.room-card{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    padding:14px 18px;
+
+    transition:var(--transition);
+
+}
+
+.room-card:active{
+
+    transform:scale(.98);
+
+}
+
+.room-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex:1;
+
+}
+
+.room-icon{
+
+    width:32px;
+
+    height:32px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+}
+
+.room-icon svg{
+
+    width:26px;
+
+    height:26px;
+
+    color:var(--primary);
+
+    stroke-width:2.2;
+
+}
+
+.room-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.room-name{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:4px;
+
+}
+
+.room-code{
+
+    font-size:.86rem;
+
+    color:var(--text-light);
+
+    font-weight:500;
+
+}
+
+.room-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.icon-btn{
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    background:transparent;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.icon-btn:hover{
+
+    background:var(--primary-light);
+
+}
+
+.icon-btn svg{
+
+    width:20px;
+
+    height:20px;
+
+    color:var(--text-light);
+
+}

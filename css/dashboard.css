@@ -1,0 +1,16 @@
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card-title i{
+    width:18px;
+    height:18px;
+    stroke-width:2;
+    color: var(--accent);
+    flex-shrink:0;
+}

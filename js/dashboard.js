@@ -71,7 +71,10 @@ function renderConsumiPerStanzaCard() {
 
     container.innerHTML = `
         <div class="rooms-header">
-            <h3>Unità per stanza</h3>
+            <h3 class="card-header">
+                <i data-lucide="house"></i>
+                <span>Unità per stanza</span>
+            </h3>
         </div>
 
         <div class="rooms-grid"></div>
@@ -87,17 +90,30 @@ function renderConsumiPerStanzaCard() {
 
             card.className = "room-item";
 
-                card.innerHTML = `
-                    <div class="room-name">${stanza}</div>
+                const icone = {
+                    "Anticamera": "door-open",
+                    "Bagno": "bath",
+                    "Camera": "bed-double",
+                    "Cameretta": "bed-single",
+                    "Cucina": "cooking-pot",
+                    "Soggiorno": "sofa"
+        };
 
-                    <div class="room-value">
-                         ${formatUnita(consumi[stanza])}
-                    </div>
-                `;  
+        card.innerHTML = `
+            <div class="room-name">
+                <i data-lucide="${icone[stanza] || 'house'}"></i>
+                <span>${stanza}</span>
+            </div>
+
+            <div class="room-value">
+                ${formatUnita(consumi[stanza])}
+            </div>
+        `;
             grid.appendChild(card);
 
         });
 
+    lucide.createIcons();
 }
 
 

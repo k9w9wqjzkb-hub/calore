@@ -34,6 +34,15 @@ function renderCaloriferi() {
 
     const perStanza = {};
 
+    const icone = {
+        "Bagno": "bath",
+        "Cucina": "cooking-pot",
+        "Soggiorno": "sofa",
+        "Anticamera": "door-open",
+        "Camera": "bed-double",
+        "Cameretta": "bed-single"
+    };
+
     db.caloriferi.forEach(calorifero => {
 
         if (!perStanza[calorifero.stanza]) {
@@ -49,51 +58,71 @@ function renderCaloriferi() {
         const room = document.createElement("div");
         room.className = "room";
 
-        let html = `
-            <h3>
-                🏠 ${stanza}
-                <span>(${caloriferi.length})</span>
-            </h3>
-        `;
+        let html = "";
 
-        caloriferi.forEach(calorifero => {
+            caloriferi.forEach(calorifero => {
 
-            html += `
-                <div class="radiator-card">
+        html += `
 
-                    <div class="rad-left">
+            <div class="room-card">
 
-                        <div class="rad-icon">♨️</div>
+                <div class="room-left">
 
-                        <div>
-                            <div class="rad-title">${calorifero.nome}</div>
-                            <div class="rad-sub">${calorifero.stanza}</div>
-                        </div>
-
+                    <div class="room-icon">
+                        <i data-lucide="${icone[stanza] || "house"}"></i>
                     </div>
 
-                    <div class="rad-actions">
+                <div class="room-info">
 
-                        <button onclick="modificaCalorifero('${calorifero.id}')">
-                            ✏️
-                        </button>
+                    <div class="room-name">
+                        ${stanza}
+                    </div>
 
-                        <button onclick="eliminaCalorifero('${calorifero.id}')">
-                            🗑
-                        </button>
-
+                    <div class="room-code">
+                        ${calorifero.nome}
                     </div>
 
                 </div>
-            `;
 
-        });
+            </div>
 
+                <div class="room-actions">
+
+                    <button class="icon-btn"
+                        onclick="modificaCalorifero('${calorifero.id}')">
+
+                        <i data-lucide="square-pen"></i>
+
+                    </button>
+
+                    <button class="icon-btn"
+                        onclick="eliminaCalorifero('${calorifero.id}')">
+
+                        <i data-lucide="trash-2"></i>
+
+                    </button>
+
+                    <button class="icon-btn">
+
+                        <i data-lucide="chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+    
         room.innerHTML = html;
 
         container.appendChild(room);
 
-    });
+        });
+
+        lucide.createIcons();
 
 }
 

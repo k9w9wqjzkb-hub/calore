@@ -8,10 +8,10 @@ Anno     : 2026
 Foglio di stile principale
 
 ==================================================*/
-@import url("css/variables.css");
-@import url("css/layout.css");
-@import url("css/cards.css");
-@import url("css/topbar.css");
+@import url("variables.css");
+@import url("layout.css");
+@import url("cards.css");
+@import url("topbar.css");
  /*==================================================
      01 - RESET
  ==================================================*/

@@ -77,6 +77,9 @@
 
     flex-shrink:0;
 
+    color:var(--nav);
+
+    transition:color .20s ease;
 }
 
 .nav-icons i{
@@ -104,3 +107,4 @@
     height:3px;
 
 }
+

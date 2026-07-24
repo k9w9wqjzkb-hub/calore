@@ -6,24 +6,37 @@
     --primary-dark:#EA580C;
     --primary-light:#FFF4EC;
 
+    /* ===== NAVIGAZIONE ===== */
+
+    --nav:#1905AC; 
+
+    /* ===== SUPERFICI ===== */
+
     --background:#F6F7FB;
     --surface:#FFFFFF;
+
+    /* ===== TESTO ===== */
+
 
     --text:#1F2937;
     --text-light:#6B7280;
 
+    /* ===== BORDI ===== */
+
     --border:#E5E7EB;
 
+    /* ===== STATI ===== */
+
+    --white:#FFFFFF;
+    --black:#222222;
     --success:#16A34A;
     --warning:#F59E0B;
     --danger:#DC2626;
-
 
     /* ===== OMBRE ===== */
 
     --shadow-sm:0 2px 6px rgba(0,0,0,.05);
     --shadow-md:0 8px 20px rgba(0,0,0,.08);
-
 
     /* ===== BORDI ===== */
 
@@ -31,28 +44,24 @@
     --radius-md:18px;
     --radius-lg:24px;
 
-
     /* ===== SPAZIATURE ===== */
 
     --page-padding:18px;
     --gap:16px;
 
-
     /* ===== HEADER ===== */
 
     --header-height:72px;
 
-
     /* ===== TRANSIZIONI ===== */
 
     --transition:.25s ease;
-}
+
 
 /* ===========================
    SPAZIATURE
 =========================== */
 
-:root{
 
     --space-xs:4px;
 
@@ -64,13 +73,12 @@
 
     --space-xl:20px;
 
-}
+
 
 /* ===========================
    TIPOGRAFIA
 =========================== */
 
-:root{
 
     --font-xs:14px;
 
@@ -84,4 +92,5 @@
 
     --font-xxl:52px;
 
+    --font-title:18px;
 }
