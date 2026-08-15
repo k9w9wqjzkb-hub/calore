@@ -1,0 +1,16 @@
+/* ==========================
+   PAGINA GRAFICI
+========================== */
+
+.filter {
+    margin: 40px 0 12px;
+}
+
+.filter select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 10px;
+    --border-medium:#CCCCCC;
+    border:1px solid var(--border-medium);
+    font-size: 14px;
+}

@@ -74,7 +74,7 @@ function renderCaloriferi() {
 
                 <div class="room-info">
 
-                    <div class="room-name">
+                    <div class="radiator-room-name">
                         ${stanza}
                     </div>
 
@@ -102,12 +102,6 @@ function renderCaloriferi() {
 
                     </button>
 
-                    <button class="icon-btn">
-
-                        <i data-lucide="chevron-right"></i>
-
-                    </button>
-
                 </div>
 
             </div>
@@ -115,7 +109,6 @@ function renderCaloriferi() {
         `;
 
     });
-    
         room.innerHTML = html;
 
         container.appendChild(room);

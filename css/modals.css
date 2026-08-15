@@ -15,23 +15,23 @@
 .app-modal{
     width:min(92%,380px);
    background:#faf7f5;
-    border-radius:18px;
+    border-radius:var(--radius-md);
     overflow:hidden;
     box-shadow:0 20px 40px rgba(0,0,0,.25);
     animation:modalShow .18s ease;
 }
 
 .app-modal-header{
-    padding:18px;
+    padding: var(--page-padding);
     font-size:18px;
     font-weight:700;
-    color:#333;
+    color:var(--text-body);
     border-bottom:1px solid #e8e2de;
 }
 
 .app-modal-body{
     padding:22px 18px;
-    color:#333;
+    color:var(--text-body);
     line-height:1.5;
     white-space:pre-line;
 }
@@ -40,15 +40,15 @@
     padding:16px;
     display:flex;
     justify-content:flex-end;
-    border-top:1px solid #eee;
+    border-top:1px solid var(--border-softest);
 }
 
 .app-modal-btn{
     border:none;
-    background:#ff7a00;
+    background:var(--color-accent);
     color:#fff;
     padding:10px 22px;
-    border-radius:12px;
+    border-radius:var(--radius-sm);
     cursor:pointer;
     font-weight:600;
 }
@@ -70,3 +70,16 @@
     }
 
 }
+
+
+ /*==================================================
+     BUTTONS
+ ==================================================*/
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+

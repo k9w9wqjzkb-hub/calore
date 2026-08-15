@@ -2,83 +2,34 @@
    CARD CALORE 2.0
 =========================== */
 
+/* =====================================================
+   CARD BASE
+===================================================== */
+
 .card{
-    background:var(--surface);
+    background:var(--surface-card);
 
-    border:1px solid rgba(0,0,0,.05);
+    border:1px solid var(--border-soft);
 
-    border-radius:20px;
+    border-radius:var(--radius-lg);
 
     padding:var(--space-lg);
 
     margin-bottom:var(--space-md);
 
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.05),
-        0 2px 8px rgba(0,0,0,.03);
+    box-shadow:var(--shadow-card);
 
-    transition:all .25s ease;
+    transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
 }
 
 .card:hover{
 
     transform:translateY(-3px);
 
-    box-shadow:
-        0 14px 34px rgba(0,0,0,.08),
-        0 4px 12px rgba(0,0,0,.05);
+    box-shadow:var(--shadow-card-hover);
 }
-
-.card-total{
-
-    grid-column:1 / -1;
-
-    min-height:102px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-}
-
-.card-title{
-
-    font-size:15px;
-
-    font-weight:600;
-
-    color:var(--text-light);
-
-    margin-bottom:10px;
-
-}
-
-.card-value{
-
-    font-size:30px;
-
-    font-weight:700;
-
-    color:var(--text);
-
-}
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:var(--space-sm);
-    margin:var(--space-md) 0;
-}
-
-.big-number{
-    font-size:30px;
-    font-weight:500;
-    line-height:1;
-}
-
-/* ===========================
-   DASHBOARD CARDS
-=========================== */
 
 .card-top{
     display:flex;
@@ -86,93 +37,25 @@
     align-items:center;
 }
 
-.card-small{
-
-    min-height:68px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-}
-
-.card-total .big-number{
-
-    font-size:44px;
-
-    font-weight:700;
-
-    color:var(--primary);
-
-    letter-spacing:-0.5px;
-
-    margin-top:6px;
-
-    line-height:1;
-}
-
-.small-number{
-
-    font-size:38px;
-
-    font-weight:700;
-
-    line-height:1;
-
-    margin-top:8px;
-}
-
-.icon,
-.icon-gray{
-
-    width:56px;
-    height:56px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:18px;
-
-    background:rgba(245,90,24,.10);
-
-    color:var(--primary);
-
-    font-size:26px;
-}
-
-.icon i,
-.icon-gray i{
-
-    font-size:26px;
-}
-
-.unit{
-    color:var(--text-light);
-    font-size:14px;
-}
-
-.card-small .label{
-
-    font-size:14px;
-
-    color:var(--text-light);
-
-    font-weight:600;
-}
+/* =====================================================
+   STRUTTURA CARD
+===================================================== */
 
 .card-header{
 
     display:flex;
     align-items:center;
+
     gap:var(--space-sm);
+
+    margin-bottom:var(--space-xs);
 
 }
 
 .card-header i{
 
-    width:18px;
-    height:18px;
+    width:var(--icon-md);
+    height:var(--icon-md);
 
     color:currentColor;
 
@@ -188,6 +71,31 @@
 
 }
 
+.card-title{
+
+    display:flex;
+    align-items:center;
+
+    gap:var(--space-xs);
+
+    margin-bottom:var(--space-xxs);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--text-light);
+
+}
+
+.card-title i{
+    width:var(--icon-md);
+    height:var(--icon-md);
+    stroke-width:2;
+    color: var(--accent);
+    flex-shrink:0;
+}
+
 .card-center{
 
     flex:1;
@@ -201,11 +109,27 @@
 
 }
 
-.card-total .card-center .number{
-    font-size:40px;
-    font-weight:700;
-    line-height:1;
+/* =====================================================
+   VARIANTI CARD
+===================================================== */
 
+.card-small{
+
+    min-height:62px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+}
+
+.card-small .label{
+
+    font-size:14px;
+
+    color:var(--text-light);
+
+    font-weight:600;
 }
 
 .card-small .card-center .number{
@@ -216,42 +140,107 @@
 
 }
 
-.card-header{
+.card-small .number{
+    color: var(--text-body);
+}
 
-    margin-bottom:6px;
+.card-total .card-center .number{
+    font-size:40px;
+    font-weight:700;
+    line-height:1;
+
+}
+
+.card-total{
+
+    grid-column:1 / -1;
+
+    min-height:94px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 
 }
 
 .card-total .number{
-    color: var(--primary);
+    color: var(--color-primary);
 }
 
-.card-small .number{
-    color: var(--text);
+.card-total .big-number{
+
+    font-size:44px;
+
+    font-weight:700;
+
+    color:var(--color-primary);
+
+    letter-spacing:-0.5px;
+
+    margin-top:2px;
+
+    line-height:1;
 }
 
-/* ===========================
-   CARD GRAFICO
-=========================== */
+/* =====================================================
+   NUMERI
+===================================================== */
+
+.big-number{
+    font-size:30px;
+    font-weight:500;
+    line-height:1;
+}
+
+.small-number{
+
+    font-size:38px;
+
+    font-weight:700;
+
+    line-height:1;
+
+    margin-top:8px;
+}
+
+.card-value{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:var(--text-body);
+
+}
+
+/* =====================================================
+   GRAFICI
+===================================================== */
 
 .chart-card{
-    padding:14px;
+    background:var(--surface-card);
+    border-radius:var(--radius-lg);
+    padding:var(--space-lg);
+    box-shadow:var(--shadow-card);
+
+    /* per ora lascia questo */
+    margin-bottom:var(--space-xs);
 }
 
 .chart-card canvas{
     width:100%;
-    height:190px !important;
+    height:165px !important;
 }
 
-/* ===========================
-   CARD CONSUMI PER STANZA
-=========================== */
+/* =====================================================
+   ROOM CARD
+===================================================== */
 
 .rooms-header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    margin-bottom:6px;
+    margin-bottom:var(--space-xs);
 }
 
 .rooms-grid{
@@ -260,21 +249,23 @@
     gap:var(--space-sm);
 }
 
-.room-item{
+.dashboard-room-item{
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    min-height:38px;
+    min-height:34px;
 
-    padding: 5px 12px;
+    padding:
+    var(--space-xxs)
+    var(--space-sm);
 
-    border-radius:12px;
+    border-radius:var(--radius-sm);
 
-    border:1px solid rgba(0,0,0,.05);
+    border:1px solid var(--border-soft);
 
-    background:var(--surface);
+    background:var(--surface-card);
 
 }
 
@@ -288,35 +279,43 @@
 
 }
 
-.room-icon .material-symbols-rounded{
-
-    font-size:20px;
-
-}
-
 .room-content{
 
     flex:1;
 
 }
 
-.room-name{
+.dashboard-room-name{
 
-    font-size:14px;
+    display:flex;
 
-    font-weight:500;
+    align-items:center;
 
-    color:var(--text);
+    gap:var(--space-xs);
+
+    font-size:var(--font-page-subtitle);
+
+    font-weight:400;
+
+    color:var(--text-body);
 
 }
 
-.room-value{
+.dashboard-room-name i{
+    width:var(--icon-sm);
+    height:var(--icon-sm);
+    color:var(--color-black);
+    stroke-width:2;
+    flex-shrink:0;
+}
 
-    font-size:14px;
+.dashboard-room-value{
 
-    font-weight:700;
+    font-size:13px;
 
-    color:var(--primary);
+    font-weight:600;
+
+    color:var(--color-primary);
 
     font-variant-numeric:tabular-nums;
 
@@ -331,7 +330,7 @@
     background:none;
     border:none;
 
-    color:var(--primary);
+    color:var(--color-primary);
 
     font-size:14px;
 
@@ -343,16 +342,51 @@
 
 }
 
-.room-name{
-    display:flex;
-    align-items:center;
-    gap:8px;
+.dashboard-room-icon 
+.material-symbols-rounded{
+
+    font-size:var(--icon-lg);
+
 }
 
-.room-name i{
-    width:16px;
-    height:16px;
-    color:#222;
-    stroke-width:2;
-    flex-shrink:0;
+/*==================================================
+     CARD COMUNI
+ ==================================================*/
+
+/***** Card Anno Termico *****/
+
+.card-anno {
+    background: transparent;
+    border:1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 6px 14px;
+    margin-bottom:var(--content-gap);
 }
+
+.card-anno .big-number {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.card-anno .card-top {
+    margin-bottom: 2px;
+}
+
+.card-anno .label {
+    color:var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card-anno .value {
+    color:var(--color-primary);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+#consumiPerStanza h3{
+
+    margin:0 0 var(--space-sm);
+
+}
+

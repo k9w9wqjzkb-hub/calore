@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1,
+                   maximum-scale=1,
+                   user-scalable=no,
+                   viewport-fit=cover">
+
+    <title>Impostazioni - Calore 2.0</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modals.css">
+
+    <link rel="apple-touch-icon" href="icons/caloriferi-512.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= TOPBAR ================= -->
+
+<header class="app-header">
+
+    <div class="app-title">
+        <span>🔥</span>
+        <span>Calore</span>
+    </div>
+
+    <nav class="nav-icons">
+
+        <a href="index.html">
+            <i data-lucide="house"></i>
+        </a>
+
+        <a href="caloriferi.html">
+            <i data-lucide="flame"></i>
+        </a>
+
+        <a href="storico.html">
+            <i data-lucide="history"></i>
+        </a>
+
+        <a href="grafici.html">
+            <i data-lucide="chart-column"></i>
+        </a>
+
+        <a href="ripartizione.html">
+            <i data-lucide="file-text"></i>
+        </a>
+
+        <a href="impostazioni.html" class="active">
+            <i data-lucide="settings"></i>
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- ================= CONTENUTO ================= -->
+
+<main class="container">
+
+    <section class="page-header">
+
+        <div class="page-heading">
+
+            <h1 class="page-title">
+
+                <i data-lucide="settings"></i>
+
+                <span>Impostazioni</span>
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                Configura e gestisci l'applicazione
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= BACKUP ================= -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <i data-lucide="database-backup"></i>
+
+            <span>Backup dati</span>
+
+        </div>
+
+        <button
+            class="btn-pill full"
+            onclick="backupDB()">
+
+            💾 Esporta Backup
+
+        </button>
+
+        <br><br>
+
+        <input
+            type="file"
+            id="restoreFile"
+            accept=".json"
+            hidden
+            onchange="ripristinaDB(this.files[0])">
+
+        <button
+            class="btn-pill full btn-secondary"
+            onclick="document.getElementById('restoreFile').click()">
+
+            ♻️ Ripristina Backup
+
+        </button>
+
+    </div>
+
+    <!-- ================= DATABASE ================= -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <i data-lucide="database"></i>
+
+            <span>Dati salvati</span>
+
+        </div>
+
+        <div class="setting-row">
+
+            <span>Caloriferi</span>
+
+            <strong id="totCaloriferi">0</strong>
+
+        </div>
+
+        <div class="setting-row">
+
+            <span>Letture</span>
+
+            <strong id="totLetture">0</strong>
+
+        </div>
+
+        <div class="setting-row">
+
+            <span>Anno termico</span>
+
+            <strong id="annoAttivo">-</strong>
+
+        </div>
+
+    </div>
+
+    <!-- ================= INFO ================= -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <i data-lucide="info"></i>
+
+            <span>Informazioni</span>
+
+        </div>
+
+        <div class="setting-row">
+
+            <span>Versione</span>
+
+            <strong id="versioneApp"></strong>
+
+        </div>
+
+    </div>
+
+    <!-- ================= AVANZATE ================= -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <i data-lucide="triangle-alert"></i>
+
+            <span>Avanzate</span>
+
+        </div>
+
+        <button
+            class="btn-danger full"
+            onclick="resetCompleto()">
+
+            🗑 Cancella tutti i dati
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="js/theme.js"></script>
+<script src="js/version.js"></script>
+<script src="js/app.js"></script>
+<script src="js/impostazioni.js"></script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+
+</html>

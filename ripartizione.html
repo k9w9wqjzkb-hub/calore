@@ -1,45 +1,92 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta charset="UTF-8">
 
-<title>Calore • Ripartizione</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+<title>Ripartizione</title>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/modals.css">
+
+<link rel="apple-touch-icon" href="icons/caloriferi-512.png">
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Caloriferi">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 
 <body>
 
 <!-- ================= TOPBAR ================= -->
 
-<header class="topbar">
-  <div class="topbar-left">
-    <div class="logo">🔥</div>
-    <span class="app-name">Calore</span>
-  </div>
+<header class="app-header">
 
-  <div class="topbar-right">
-    <button class="icon-btn" onclick="location.href='index.html'">🏠</button>
-    <button class="icon-btn" onclick="location.href='caloriferi.html'">♨️</button>
-    <button class="icon-btn" onclick="location.href='storico.html'">🕘</button>
-    <button class="icon-btn" onclick="location.href='grafici.html'">📊</button>
-    <button class="icon-btn active">📋</button>
-  </div>
+    <div class="app-title">
+        <span>🔥</span>
+        <span>Calore</span>
+    </div>
+
+    <nav class="nav-icons">
+
+    <a href="index.html" title="Dashboard">
+        <i data-lucide="house"></i>
+    </a>
+
+    <a href="caloriferi.html" title="Caloriferi">
+        <i data-lucide="flame"></i>
+    </a>
+
+    <a href="storico.html" title="Storico">
+        <i data-lucide="history"></i>
+    </a>
+
+    <a href="grafici.html" title="Grafici">
+        <i data-lucide="chart-column"></i>
+    </a>
+
+    <a href="ripartizione.html" class="active" title="Ripartizione">
+        <i data-lucide="file-text"></i>
+    </a>
+
+    <a href="impostazioni.html" title="Impostazioni">
+        <i data-lucide="settings"></i>
+    </a>
+
+</nav>
+
 </header>
 
 <!-- ================= CONTENUTO ================= -->
 
-<main class="container">
+<section class="container">
 
     <div class="page-header">
 
-        <div class="page-title">
-            <h1>Ripartizione</h1>
-            <p>Unità contabilizzate</p>
-        </div>
+    <div class="page-heading">
+
+        <h1 class="page-title">
+            <i data-lucide="file-text"></i>
+            <span>Ripartizione</span>
+        </h1>
+
+        <p class="page-subtitle">
+            Unità contabilizzate
+        </p>
 
     </div>
+
+</div>
+
+</section>
 
     <!-- ================= ANNO TERMICO ================= -->
 
@@ -137,10 +184,30 @@
 </div>
 
 <!-- ================= SCRIPT ================= -->
- 
+
+<script src="js/theme.js"></script> 
 <script src="js/version.js"></script>
 <script src="js/app.js"></script>
 <script src="js/ripartizione.js"></script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
+
+
+<script>
+window.addEventListener("load", () => {
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('Service Worker attivo su:', reg.scope))
+            .catch(err => console.error('Errore SW:', err));
+    }
+
+});
+</script>
 
 </body>
 </html>

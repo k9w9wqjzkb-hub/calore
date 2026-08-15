@@ -1,0 +1,314 @@
+# Calore 2.0
+
+# ARCHITETTURA DEL PROGETTO
+
+**Versione documento:** 1.0
+
+**Ultimo aggiornamento:** 25/07/2026
+
+---
+
+# Scopo del documento
+
+Questo documento definisce l'architettura di Calore 2.0.
+
+Tutte le modifiche future dovranno rispettare queste regole.
+
+L'obiettivo è mantenere il codice semplice, leggibile, riutilizzabile e facile da estendere.
+
+---
+
+# Filosofia del progetto
+
+Calore 2.0 segue alcuni principi fondamentali.
+
+## 1. Una responsabilità per ogni file
+
+Ogni file deve avere uno scopo preciso.
+
+Esempio:
+
+- buttons.css → solo pulsanti
+- cards.css → solo card
+- forms.css → solo form
+
+Mai mescolare componenti diversi nello stesso file.
+
+---
+
+## 2. Un componente ha una sola casa
+
+Ogni componente deve esistere in un solo punto del progetto.
+
+Esempio corretto
+
+✓ `.btn-primary` esiste solo in `buttons.css`
+
+Esempio errato
+
+✗ `.btn-primary` in `buttons.css`
+
+✗ `.btn-primary` anche in `dashboard.css`
+
+---
+
+## 3. Nessuna duplicazione
+
+Prima di creare:
+
+- una classe CSS
+- una funzione JavaScript
+- un componente
+
+bisogna sempre verificare che non esista già qualcosa di equivalente.
+
+---
+
+## 4. Componenti prima delle pagine
+
+Se un elemento può essere utilizzato in più pagine, appartiene alla libreria dei componenti.
+
+Non al CSS della pagina.
+
+---
+
+# Struttura del progetto
+
+```
+Calore-2.0/
+
+css/
+js/
+assets/
+docs/
+
+manifest.json
+service-worker.js
+README.md
+```
+
+---
+
+# Cartella CSS
+
+```
+css/
+
+variables.css
+layout.css
+
+buttons.css
+cards.css
+forms.css
+tables.css
+icons.css
+badges.css
+modals.css
+
+topbar.css
+animations.css
+responsive.css
+
+dashboard.css
+caloriferi.css
+storico.css
+grafici.css
+ripartizione.css
+
+style.css
+```
+
+---
+
+# Regole CSS
+
+## variables.css
+
+Contiene esclusivamente:
+
+- colori
+- font
+- spaziature
+- radius
+- ombre
+- animazioni
+- z-index
+
+Mai classi CSS.
+
+---
+
+## layout.css
+
+Gestisce solamente il layout.
+
+Esempi:
+
+.page
+
+.container
+
+.section
+
+.grid
+
+.flex
+
+.stack
+
+.inline
+
+.hidden
+
+---
+
+## buttons.css
+
+Contiene tutti i pulsanti dell'app.
+
+---
+
+## cards.css
+
+Contiene tutte le card riutilizzabili.
+
+---
+
+## forms.css
+
+Contiene tutti i controlli dei form.
+
+---
+
+## tables.css
+
+Contiene tutte le tabelle.
+
+---
+
+## icons.css
+
+Contiene tutte le regole delle icone.
+
+Dimensioni.
+
+Colori.
+
+Hover.
+
+Animazioni.
+
+---
+
+## badges.css
+
+Contiene tutti i badge.
+
+---
+
+## modals.css
+
+Contiene tutte le finestre modali.
+
+---
+
+# CSS delle pagine
+
+I CSS delle pagine devono contenere esclusivamente elementi che appartengono a quella pagina.
+
+Esempio Dashboard
+
+.stats-grid
+
+.chart-card
+
+.last-reading-card
+
+Esempio Storico
+
+.history-list
+
+.history-item
+
+---
+
+# Convenzione dei nomi
+
+Per rendere il progetto uniforme utilizziamo prefissi.
+
+| Prefisso | Utilizzo |
+|----------|----------|
+| btn- | Pulsanti |
+| card- | Card |
+| icon- | Icone |
+| form- | Form |
+| table- | Tabelle |
+| badge- | Badge |
+| modal- | Modali |
+| page- | Layout pagina |
+| chart- | Grafici |
+| history- | Storico |
+
+---
+
+# Workflow di sviluppo
+
+Ogni modifica segue sempre questo ordine.
+
+1. Analisi
+
+2. Pianificazione
+
+3. Refactoring
+
+4. Test
+
+5. Commit Git
+
+6. Push GitHub
+
+Mai saltare il test.
+
+---
+
+# Regola fondamentale
+
+Prima di creare una nuova classe o una nuova funzione chiedersi sempre:
+
+"Esiste già qualcosa che fa questa cosa?"
+
+Se la risposta è sì:
+
+riutilizzare.
+
+Se la risposta è no:
+
+creare il componente nel file corretto.
+
+---
+
+# Obiettivo finale
+
+Un progetto:
+
+- ordinato
+- leggibile
+- facilmente manutenibile
+- facilmente estendibile
+- senza duplicazioni
+- con componenti riutilizzabili
+
+Questa è la filosofia di Calore 2.0.
+
+# Regole del Team
+
+Anche se il progetto è sviluppato da una sola persona, ogni modifica deve essere realizzata come se fosse destinata a un team di sviluppo.
+
+Le decisioni devono privilegiare:
+
+- chiarezza del codice;
+- riutilizzo dei componenti;
+- semplicità di manutenzione;
+- documentazione aggiornata.
+
+Il codice deve essere comprensibile anche dopo molti mesi senza doverne ricostruire il funzionamento.

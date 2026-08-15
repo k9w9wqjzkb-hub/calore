@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Storico Letture</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+<title>Calore 2.0 - Storico</title>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/modals.css">
 
-</head>
+<link rel="apple-touch-icon" href="icons/caloriferi-512.png">
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Caloriferi">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <body>
 
@@ -51,26 +64,87 @@
 
 <main class="container">
 
-  <section class="page-header">
+<section class="page-header">
 
-    <h1>Storico letture</h1>
+    <div class="page-heading">
 
-    <p>Consulta e gestisci lo storico delle letture</p>
+        <h1 class="page-title">
+            <i data-lucide="history"></i>
+            <span>Storico letture</span>
+        </h1>
+
+        <p class="page-subtitle">
+            Consulta e gestisci lo storico delle letture
+        </p>
+
+    </div>
 
 </section>
 
-    <div class="filter">
-      <select id="filtroCalorifero">
-      <option value="">Tutti i caloriferi</option>
-      </select>
+    <!-- FILTRI -->
+
+<div class="filters-grid">
+
+    <!-- ANNO TERMICO -->
+
+    <div class="card filter-card">
+
+        <div class="filter-icon">
+            <i data-lucide="calendar-days"></i>
+        </div>
+
+        <div class="filter-content">
+
+            <label for="filtroAnno">
+                Anno termico
+            </label>
+
+            <select id="filtroAnno">
+
+                <option value="">
+                    Anno corrente
+                </option>
+
+            </select>
+
+        </div>
+
     </div>
+
+    <!-- STANZA -->
+
+    <div class="card filter-card">
+
+        <div class="filter-icon">
+            <i data-lucide="house"></i>
+        </div>
+
+        <div class="filter-content">
+
+            <label for="filtroStanza">
+                Stanza
+            </label>
+
+            <select id="filtroStanza">
+
+                <option value="">
+                    Tutte le stanze
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
 
     <div class="storico-wrapper">
       <div class="list-header">
       <div>Data</div>
       <div>Stanza</div>
       <div class="value-col">Valore</div>
-      <div>Azioni</div>
+      
     </div>
       <div class="list-card"></div>
     </div>
@@ -79,19 +153,56 @@
 
 <!-- MODALE MODIFICA LETTURA -->
 <div id="modalModificaLettura" class="modal hidden">
-  <div class="modal-content">
-    <h3>✏️ Modifica Lettura</h3>
-    <label>Data</label>
-    <input type="date" id="editData">
-    <label>Stanza</label>
-    <select id="editStanza"></select>
-    <label>Valore</label>
-    <input type="number" id="editValore">
-    <div class="modal-actions">
-      <button class="secondary" onclick="chiudiModificaLettura()">Annulla</button>
-      <button class="primary" onclick="salvaModificaLettura()">Salva</button>
+
+    <div class="modal-content">
+
+        <h3>✏️ Modifica Lettura</h3>
+
+        <label for="editData">
+            Data
+        </label>
+
+        <input
+            type="date"
+            id="editData">
+
+        <label for="editStanza">
+            Stanza
+        </label>
+
+        <select id="editStanza"></select>
+
+        <label for="editValore">
+            Valore
+        </label>
+
+        <input
+            type="number"
+            id="editValore"
+            inputmode="decimal">
+
+        <div class="modal-actions">
+
+            <button
+                class="btn-modal-secondary"
+                onclick="chiudiModificaLettura()">
+
+                Annulla
+
+            </button>
+
+            <button
+                class="btn-modal-primary"
+                onclick="salvaModificaLettura()">
+
+                Salva
+
+            </button>
+
+        </div>
+
     </div>
-  </div>
+
 </div>
 
 <!-- OVERLAY CONFERMA -->
@@ -99,25 +210,56 @@
 
 <!-- MODALE CONFERMA -->
 <div id="modalConferma" class="modal hidden">
-  <div class="modal-content">
 
-    <h3 id="titoloConferma"></h3>
+    <div class="modal-content">
 
-    <div id="testoConferma"></div>
+        <div class="modal-header">
 
-    <div class="modal-actions">
-      <button class="secondary" onclick="chiudiConferma()">
-        Annulla
-      </button>
+            <h3 id="titoloConferma"></h3>
 
-      <button id="btnConferma" class="primary">
-        Elimina
-      </button>
+            <button
+                class="close-btn"
+                onclick="chiudiConferma()"
+                aria-label="Chiudi">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div id="testoConferma"></div>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                class="btn-modal-secondary"
+                onclick="chiudiConferma()">
+
+                Annulla
+
+            </button>
+
+            <button
+                id="btnConferma"
+                class="btn-modal-primary">
+
+                Elimina
+
+            </button>
+
+        </div>
+
     </div>
 
-  </div>
 </div>
 
+<!-- JS -->
+<script src="js/theme.js"></script>
 <script src="js/version.js"></script>
 <script src="js/app.js"></script>
 <script src="js/storico.js"></script>
@@ -126,6 +268,18 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
     lucide.createIcons();
+</script>
+
+<script>
+window.addEventListener("load", () => {
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('Service Worker attivo su:', reg.scope))
+            .catch(err => console.error('Errore SW:', err));
+    }
+
+});
 </script>
 
 </body>

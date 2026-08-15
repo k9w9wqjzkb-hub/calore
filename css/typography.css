@@ -1,0 +1,65 @@
+
+ /*==================================================
+     05 - TYPOGRAPHY
+ ==================================================*/
+
+h2{
+    margin:0 0 12px;
+    font-size:22px;
+    font-weight:600;
+}
+
+.label,
+.unit {
+  color:var(--text-muted);
+  font-size: 14px;
+}
+
+.value {
+  font-weight: 600;
+}
+
+/* =====================================================
+   PAGE TITLES
+===================================================== */
+
+.page-title{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin:0;
+
+    font-size:var(--font-page-title);
+    font-weight:600;
+
+    color:var(--text-page-title);
+
+}
+
+.page-title svg{
+
+    width:24px;
+    height:24px;
+    min-width:24px;
+
+    flex-shrink:0;
+
+    color:var(--color-primary);
+
+}
+
+.page-subtitle{
+
+    margin:2px 0 0;
+
+    font-size:var(--font-page-subtitle);
+
+    font-weight:400;
+
+    line-height:1.4;
+
+    color:var(--text-page-subtitle);
+
+}

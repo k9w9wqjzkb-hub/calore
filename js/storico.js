@@ -18,26 +18,66 @@ Luglio 2026
 
 let letturaInModifica = null;
 
-function popolaFiltroCaloriferi() {
+function popolaFiltroStanze() {
 
-    const select = document.getElementById("filtroCalorifero");
+    const select = document.getElementById("filtroStanza");
 
     if (!select) return;
 
     const db = getDB();
 
-    select.innerHTML = `<option value="">Tutti i caloriferi</option>`;
+    select.innerHTML = `
+        <option value="">
+            Tutte le stanze
+        </option>
+    `;
 
-    db.caloriferi.forEach(c => {
+    const stanze = [...new Set(
+        db.caloriferi.map(c => c.stanza)
+    )].sort();
+
+    stanze.forEach(stanza => {
 
         const option = document.createElement("option");
 
-        option.value = c.id;
-        option.textContent = `${c.nome} (${c.stanza})`;
+        option.value = stanza;
+        option.textContent = stanza;
 
         select.appendChild(option);
 
     });
+
+}
+
+function popolaFiltroAnnoTermico() {
+
+    const select = document.getElementById("filtroAnno");
+
+    if (!select) return;
+
+    select.innerHTML = "";
+
+    const anni = new Set(
+    getDB().letture.map(l => getAnnoTermico(l.data))
+);
+
+// aggiunge sempre l'anno attivo
+anni.add(getAnnoTermicoAttivo());
+
+const elenco = [...anni].sort().reverse();
+
+    elenco.forEach(anno => {
+
+        const option = document.createElement("option");
+
+        option.value = anno;
+        option.textContent = anno;
+
+        select.appendChild(option);
+
+    });
+
+    select.value = getAnnoTermicoAttivo();
 
 }
 
@@ -50,10 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshStorico();
 
     document
-        .getElementById("filtroCalorifero")
+        .getElementById("filtroStanza")
+        ?.addEventListener("change", renderStoricoAttivo);
+
+    document
+        .getElementById("filtroAnno")
         ?.addEventListener("change", renderStoricoAttivo);
 
 });
+
 
 window.addEventListener("pageshow", refreshStorico);
 
@@ -71,8 +116,11 @@ document.addEventListener("visibilitychange", () => {
 
 function renderStoricoAttivo() {
 
-    const filtroEl = document.getElementById("filtroCalorifero");
-    const filtro = filtroEl ? (filtroEl.value || null) : null;
+    const stanza =
+    document.getElementById("filtroStanza")?.value || null;
+
+    const anno =
+    document.getElementById("filtroAnno")?.value || null;
 
     const container = document.querySelector(".list-card");
 
@@ -80,9 +128,19 @@ function renderStoricoAttivo() {
 
     container.innerHTML = "";
 
-    const letture = getLettureFiltrate({
-        caloriferoId: filtro
-    }).sort((a, b) => new Date(b.data) - new Date(a.data));
+        let letture = getLettureFiltrate({
+        stanza
+        });
+
+        if (anno) {
+
+        letture = letture.filter(
+        l => getAnnoTermico(l.data) === anno
+        );
+}
+
+letture.sort((a, b) => new Date(b.data) - new Date(a.data));
+
 
     letture.forEach(l => {
 
@@ -93,18 +151,39 @@ function renderStoricoAttivo() {
         row.innerHTML = `
             <div>${formatDate(l.data)}</div>
             <div>${l.stanza ?? "-"}</div>
+
             <div class="value-col">
                 ${formatDisplay(l.valore)}
             </div>
+
             <div class="actions">
-                <button onclick="modificaLettura('${l.id}')">✏️</button>
-                <button onclick="cancellaLettura('${l.id}')">🗑️</button>
+
+                <button
+                    class="icon-btn"
+                    onclick="modificaLettura('${l.id}')"
+                    aria-label="Modifica lettura">
+
+                    <i data-lucide="square-pen"></i>
+
+                </button>
+
+                <button
+                    class="icon-btn"
+                    onclick="cancellaLettura('${l.id}')"
+                    aria-label="Elimina lettura">
+
+                    <i data-lucide="trash-2"></i>
+
+                </button>
+
             </div>
         `;
 
         container.appendChild(row);
 
     });
+
+    lucide.createIcons();
 
 }
 
@@ -266,7 +345,9 @@ function cancellaLettura(id) {
 
 function refreshStorico() {
 
-    popolaFiltroCaloriferi();
+    popolaFiltroAnnoTermico();
+
+    popolaFiltroStanze();
 
     renderStoricoAttivo();
 

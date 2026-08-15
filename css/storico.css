@@ -1,17 +1,270 @@
-.page-header{
-    margin-bottom:24px;
+/*==================================================
+    STORICO WRAPPER
+==================================================*/
+
+.storico-wrapper { 
+  margin: 12px 0;
+  padding: 0 8px;
+  border-radius: 14px; 
+  overflow: hidden; 
+  background:var(--surface-muted);
 }
 
-.page-header h1{
+/*==================================================
+    STORICO LISTA
+==================================================*/
+
+.list-header {
+
+    position: sticky;
+    top: 0;
+    z-index: 5;
+
+    background: var(--surface-card);
+
+    display: grid;
+
+    grid-template-columns:
+        110px
+        minmax(90px, 1fr)
+        65px
+        82px;
+
+    gap: 6px;
+
+    padding: 10px 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: var(--text-body);
+
+    border-bottom: 1px solid var(--border-soft);
+
+}
+
+
+.list-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    max-height: 55vh;
+
+    overflow-y: auto;
+
+    padding: 6px 4px;
+
+}
+
+
+.list-row {
+
+    display: grid;
+
+    grid-template-columns:
+        110px
+        minmax(90px, 1fr)
+        65px
+        82px;
+
+    gap: 6px;
+
+    padding: 10px 8px;
+
+    align-items: center;
+
+    background: var(--surface-card);
+
+    border-radius: var(--radius-sm);
+
+    box-shadow: var(--shadow-sm);
+
+    font-size: 14px;
+
+    color: var(--text-body);
+
+}
+
+
+.list-row div {
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.value-col {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    color: var(--color-primary);
+
+    gap: 6px;
+
+    font-weight: 600;
+
+    text-align: right;
+
+}
+
+
+.actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+/* ================= RESPONSIVE GRID (iPhone SAFE) ================= */
+
+@media (max-width:480px){
+
+.actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:var(--space-xs);
+}
+
+.actions button{
+    width:22px;
+    height:22px;
+    padding:0;
     margin:0;
-    font-size:2.2rem;
-    font-weight:700;
-    color:var(--text);
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:15px;
+    transition:.15s;
 }
 
-.page-header p{
-    margin-top:8px;
-    color:var(--text-light);
-    font-size:1.1rem;
-    line-height:1.4;
+}
+/* ================= FILTRO ================= */
+.filter { 
+  margin: 12px 0; 
+  max-width: 420px; 
+}
+.filter select { 
+  width: 100%; 
+  padding: 8px 12px; 
+  border-radius: 12px; 
+  border:1px solid var(--border-medium);
+}
+
+/*==================================================
+    STORICO
+ ==================================================*/
+
+.date-col, .rad-col, .room-col, .value-col {
+  font-size: 14px;
+}
+
+/*==================================================
+    FILTRI
+==================================================*/
+
+.filters-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:var(--space-md);
+
+    margin-bottom:var(--space-lg);
+
+}
+
+.filter-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:var(--space-md);
+
+    padding:var(--space-md);
+
+}
+
+.filter-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:var(--icon-lg);
+
+    color:var(--color-primary);
+
+    flex-shrink:0;
+
+}
+
+.filter-icon svg{
+
+    width:22px;
+    height:22px;
+
+}
+
+.filter-content{
+
+    flex:1;
+
+}
+
+.filter-content label{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:13px;
+
+    color:var(--text-muted);
+
+    font-weight:500;
+
+}
+
+.filter-content select{
+
+    width:100%;
+
+    border:none;
+
+    background:transparent;
+
+    outline:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--text-body);
+
+    cursor:pointer;
+
+    appearance:none;
+
 }

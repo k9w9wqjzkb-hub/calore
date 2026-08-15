@@ -88,7 +88,7 @@ function renderConsumiPerStanzaCard() {
 
             const card = document.createElement("div");
 
-            card.className = "room-item";
+            card.className = "dashboard-room-item";
 
                 const icone = {
                     "Anticamera": "door-open",
@@ -100,12 +100,12 @@ function renderConsumiPerStanzaCard() {
         };
 
         card.innerHTML = `
-            <div class="room-name">
+            <div class="dashboard-room-name">
                 <i data-lucide="${icone[stanza] || 'house'}"></i>
                 <span>${stanza}</span>
             </div>
 
-            <div class="room-value">
+            <div class="dashboard-room-value">
                 ${formatUnita(consumi[stanza])}
             </div>
         `;
@@ -160,7 +160,7 @@ function renderChart() {
 
                 data: consumiMese,
 
-                borderColor: "#e4572e",
+                borderColor: THEME.colors.primary,
 
                 backgroundColor: "rgba(228,87,46,0.15)",
 
@@ -170,7 +170,7 @@ function renderChart() {
 
                 pointRadius: 4,
 
-                pointBackgroundColor: "#e4572e"
+                pointBackgroundColor: THEME.colors.primary
 
             }]
 

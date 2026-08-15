@@ -1,0 +1,35 @@
+/*==================================================
+    IMPOSTAZIONI
+==================================================*/
+
+.setting-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:var(--space-sm) 0;
+
+    border-bottom:1px solid var(--border-soft);
+
+}
+
+.setting-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.setting-row span{
+
+    color:var(--text-light);
+
+}
+
+.setting-row strong{
+
+    color:var(--text-body);
+
+}

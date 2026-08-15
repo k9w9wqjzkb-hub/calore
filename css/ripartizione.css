@@ -1,0 +1,23 @@
+/*==================================================
+     08 - RIPARTIZIONE
+ ==================================================*/
+.rip-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+}
+
+.rip-left{
+    flex:1;
+}
+
+.rip-right{
+    width:170px;
+}
+
+.rip-right .row{
+    display:flex;
+    justify-content:space-between;
+    margin:4px 0;
+}

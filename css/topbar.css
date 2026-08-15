@@ -18,7 +18,7 @@
 
     height:76px;
 
-    background:#fff;
+    background:var(--surface-card);
 
     border-radius:28px;
 
@@ -40,7 +40,7 @@
     font-size:18px;
     font-weight:700;
 
-    color:#222;
+    color:var(--color-black);
     min-width:0;
 }
 
@@ -58,7 +58,7 @@
 
     align-items:center;
 
-    gap:8px;
+    gap:var(--space-xs);
 
     margin-left:8px;
 
@@ -77,9 +77,9 @@
 
     flex-shrink:0;
 
-    color:var(--nav);
+    color:var(--nav-icon);
 
-    transition:color .20s ease;
+    transition:color var(--transition-fast);
 }
 
 .nav-icons i{
@@ -89,11 +89,11 @@
 }
 
 .nav-icons a:hover{
-    color:#f55a18;
+    color:var(--color-primary);
 }
 
 .nav-icons a.active{
-    color:#f55a18;
+    color:var(--color-primary);
 }
 
 .nav-icons a.active::after{
@@ -106,5 +106,22 @@
 
     height:3px;
 
+}
+
+/*==================================================
+     03 - HEADER
+ ==================================================*/
+.dashboard-header, 
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;          /* 🔒 BLOCCA il wrap */
+  gap: 10px;
+}
+
+.page-heading {
+  flex: 1 1 auto;     /* il titolo può restringersi */
+  min-width: 0;       /* FONDAMENTALE per iOS */
 }
 

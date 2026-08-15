@@ -5,51 +5,88 @@
 <!-- 🔑 QUESTO È FONDAMENTALE -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Grafici Consumi</title>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+
 <link rel="stylesheet" href="css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="css/modals.css">
+
+<link rel="apple-touch-icon" href="icons/caloriferi-512.png">
 <link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Caloriferi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-<style>
-  body { font-family: sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
-  header.topbar { display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);}
-  header .logo { font-size: 24px; }
-  main.container { padding: 16px; }
-  h2 { margin-top:0; }
-
-  .filter { margin: 40px 0 12px 0; }
-  .filter select { width: 100%; padding: 8px 10px; border-radius: 10px; border:1px solid #ccc; font-size:14px; }
-
-  .chart-card{ background:#fff; padding:16px; border-radius:12px; margin-bottom:16px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-</style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-left">
-    <div class="logo">🔥</div>
-    <span class="app-name">Calore</span>
-  </div>
-  <div class="topbar-right">
-    <button class="icon-btn" onclick="location.href='index.html'">🏠</button>
-    <button class="icon-btn" onclick="location.href='caloriferi.html'">♨️</button>
-    <button class="icon-btn" onclick="location.href='storico.html'">🕘</button>
-    <button class="icon-btn active" onclick="location.href='grafici.html'">📊</button>
-    <button class="icon-btn" onclick="location.href='ripartizione.html'">📋</button>
-  </div>
+<header class="app-header">
+
+    <div class="app-title">
+        <span>🔥</span>
+        <span>Calore</span>
+    </div>
+
+    <nav class="nav-icons">
+
+        <a href="index.html" title="Dashboard">
+            <i data-lucide="house"></i>
+        </a>
+
+        <a href="caloriferi.html" title="Caloriferi">
+            <i data-lucide="flame"></i>
+        </a>
+
+        <a href="storico.html" title="Storico">
+            <i data-lucide="history"></i>
+        </a>
+
+        <a href="grafici.html" class="active" title="Grafici">
+            <i data-lucide="chart-column"></i>
+        </a>
+
+        <a href="ripartizione.html" title="Ripartizione">
+            <i data-lucide="file-text"></i>
+        </a>
+
+        <a href="impostazioni.html" title="Impostazioni">
+            <i data-lucide="settings"></i>
+        </a>
+
+    </nav>
+
 </header>
 
 <main class="container">
-  <h2>Grafici Consumi</h2>
+  <div class="page-header">
+
+    <div class="page-heading">
+
+        <h1 class="page-title">
+            <i data-lucide="chart-column"></i>
+            <span>Grafici</span>
+        </h1>
+
+        <p class="page-subtitle">
+            Analizza l'andamento dei consumi
+        </p>
+
+    </div>
+
+</div>
 
   <div class="filter">
     <label for="filtroAnno">Seleziona anno:</label>
     <select id="filtroAnno"></select>
   </div>
 
-  <div class="chart-card">
+  <div class="card chart-card">
     <h3>Consumi per Anno Termico (ultimi 5 anni)</h3>
     <canvas id="chartAnno"></canvas>
   </div>
@@ -60,9 +97,18 @@
   </div>
 </main>
 
+<!-- JS -->
+<script src="js/theme.js"></script>
 <script src="js/version.js"></script>
 <script src="js/app.js"></script>
 <script src="js/grafici.js"></script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+    lucide.createIcons();
+</script>
 
 <script>
   if ('serviceWorker' in navigator) {

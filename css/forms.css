@@ -1,0 +1,37 @@
+/* ==========================================================
+   Form Controls
+========================================================== */
+
+input, 
+select, 
+textarea {
+  font-size: 16px;
+}
+
+/*==================================================
+    SELECT
+==================================================*/
+
+.form-select{
+
+    width:100%;
+
+    height:46px;
+
+    padding:0 var(--space-md);
+
+    background:var(--surface-card);
+
+    color:var(--text-body);
+
+    border:1px solid var(--border-soft);
+
+    border-radius:var(--radius-md);
+
+    font-size:15px;
+
+    appearance:none;
+
+    cursor:pointer;
+
+}

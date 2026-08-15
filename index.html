@@ -6,10 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
             <title>Calore 2.0</title>
             <link rel="preconnect" href="https://cdn.jsdelivr.net">
-            <link rel="stylesheet" href="css/variables.css">
-            <link rel="stylesheet" href="css/layout.css">
-            <link rel="stylesheet" href="css/buttons.css">
-            <link rel="stylesheet" href="css/cards.css">
+            
             <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="css/modals.css">
             <link rel="apple-touch-icon" href="icons/caloriferi-512.png">
@@ -22,6 +19,8 @@
 
     </head>
 <body>
+
+<!-- ================= TOPBAR ================= -->
 
 <header class="app-header">
 
@@ -58,6 +57,8 @@
 
 </nav>
 
+<!-- ================= CONTENUTO ================= -->
+
 </header>
 
   <main class="container">
@@ -67,18 +68,33 @@
         <span class="value" id="annoTermicoAttivo"></span>
     </div>
 
-  <!-- HEADER DASHBOARD -->
+<!-- HEADER DASHBOARD -->
 
-    <div class="dashboard-actions">
-      <button class="btn-pill" onclick="apriLetturaSheet()">
-        📝 Registra lettura mensile
-      </button>
+<div class="page-header">
+
+    <div class="page-heading">
+
+        <h1 class="page-title">
+            <i data-lucide="house"></i>
+            <span>Dashboard</span>
+        </h1>
+
     </div>
 
-  <!-- CARDS TOTALI -->
-<div class="stats-grid">
+    <div class="page-actions">
 
-    <!-- Consumo contabilizzato -->
+        <button class="btn-pill" onclick="apriLetturaSheet()">
+            📝 Nuova lettura
+        </button>
+
+    </div>
+
+    </div>
+
+        <!-- CARDS TOTALI -->
+    <div class="stats-grid">
+
+        <!-- Consumo contabilizzato -->
     <div class="card card-total">
 
         <div class="card-header">
@@ -133,24 +149,13 @@
 
   <!-- CARD CONSUMI PER STANZA -->
     <div class="card" id="consumiPerStanza">
-      <h3>Consumi per Stanza</h3>
+
+    <div class="card-header">
+        <i data-lucide="house"></i>
+        <span>Consumi per stanza</span>
     </div>
+</div>
 
-  <!-- BACKUP -->
-
-  <div class="card">
-    <h3>Backup dati</h3>
-    <button class="btn-pill full" onclick="backupDB()">
-      💾 Esporta Backup
-    </button>
-    <br><br>
-    <input type="file" id="restoreFile" accept=".json" style="display:none"
-      onchange="ripristinaDB(this.files[0])">
-    <button class="btn-pill full" style="background:#555"
-      onclick="document.getElementById('restoreFile').click()">
-      ♻️ Ripristina Backup
-    </button>
-  </div>
 </main>
 
 <!-- OVERLAY NUOVA LETTURA -->
@@ -197,11 +202,11 @@
 
     <div class="sheet-actions">
 
-    <button class="btn-secondary" onclick="chiudiLetturaSheet()">
+    <button class="btn-modal-secondary" onclick="chiudiLetturaSheet()">
         Annulla
     </button>
 
-    <button class="btn-pill" onclick="salvaLettura()">
+    <button class="btn-modal-primary" onclick="salvaLettura()">
         Registra
     </button>
     </div> <!-- sheet-actions -->
@@ -211,7 +216,8 @@
 </div> <!-- letturaSheet -->
 
 <!-- JS -->
-<script src="js/cversion.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/version.js"></script>
 <script src="js/app.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/modals.js"></script>

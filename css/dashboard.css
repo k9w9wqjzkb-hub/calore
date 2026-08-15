@@ -1,16 +1,173 @@
-.card-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
+
+
+/* ======================================================
+   LAYOUT DASHBOARD
+====================================================== */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:var(--space-xs);
+    margin: 6px 0;
 }
 
-.card-title i{
-    width:18px;
-    height:18px;
-    stroke-width:2;
-    color: var(--accent);
-    flex-shrink:0;
+.stats-grid .card{
+    margin-bottom:0;
+}
+
+/*==================================================
+    DASHBOARD - REGISTRA LETTURA
+==================================================*/
+
+.sheet-actions{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+    margin-top:20px;
+
+}
+
+
+.sheet-actions button{
+
+    width:100%;
+
+    min-height:56px;
+
+    border-radius:17px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+
+/* Annulla */
+
+.sheet-actions .btn-secondary,
+.sheet-actions .btn-modal-secondary{
+
+    background:#d8d8da;
+
+    color:var(--text-body);
+
+    border:1px solid var(--border-soft);
+
+}
+
+
+/* Azione principale */
+
+.sheet-actions .btn-primary,
+.sheet-actions .btn-modal-primary{
+
+    background:var(--color-primary);
+
+    color:var(--color-white);
+
+    border:none;
+
+}
+
+/*==================================================
+    DASHBOARD - ULTIMA LETTURA
+==================================================*/
+
+.ultima-lettura{
+
+    margin:12px 0 18px;
+    padding:var(--space-lg);
+
+    background:var(--surface-hover);
+
+    border-radius:14px;
+
+    border:1px solid var(--border-light);
+
+}
+.ultima-title{
+
+    font-size:13px;
+    font-weight:600;
+
+    color:var(--text-secondary);
+
+    margin-bottom:12px;
+
+}
+
+.ultima-data{
+
+    font-size:15px;
+
+    margin-bottom:10px;
+
+}
+
+.ultima-display{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-top:10px;
+
+    border-top:1px solid 
+
+}
+
+.ultima-display span{
+
+    color:var(--text-secondary);
+
+    font-size:14px;
+
+}
+
+.ultima-display strong{
+
+    font-size:22px;
+
+    color:var(--color-primary);
+
+}
+
+/*==================================================
+     DASHBOARD
+ ==================================================*/
+.room {
+  margin-bottom: 24px;
+}
+
+.room h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.room span {
+  color:var(--text-muted);
+  font-weight: 400;
+}
+
+/*==================================================
+    DASHBOARD HEADER
+==================================================*/
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:12px 0;
+}
+
+.dashboard-actions{
+    display:flex;
 }

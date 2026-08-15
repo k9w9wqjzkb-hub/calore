@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/caloriferi.css">
   <link rel="manifest" href="manifest.json">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Caloriferi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -54,25 +55,38 @@
 
 <main class="container">
 
-  <!-- HEADER -->
-  <div class="page-header">
-    <div class="page-title">
+    <div class="page-header">
 
-    <h1 class="card-title">
-        <i data-lucide="flame"></i>
-        <span>Caloriferi</span>
-    </h1>
+        <div class="page-heading">
 
-    <p>Gestisci i caloriferi del tuo appartamento</p>
+            <h1 class="page-title">
+                <i data-lucide="flame"></i>
+                <span>Caloriferi</span>
+            </h1>
 
-</div>
-    <div class="page-action">
-      <button class="btn-pill" onclick="apriCaloriferoSheet()">＋ Aggiungi</button>
+            <p class="page-subtitle">
+                Gestisci i caloriferi del tuo appartamento
+            </p>
+
+        </div>
+
+        <div class="page-actions">
+
+            <button
+                class="btn-pill"
+                onclick="apriCaloriferoSheet()">
+
+                <i data-lucide="plus"></i>
+                <span>Aggiungi</span>
+
+            </button>
+
+        </div>
+
     </div>
-  </div>
 
-  <!-- CONTAINER CALORIFERI -->
-  <div id="caloriferiContainer"></div>
+    <!-- CONTAINER CALORIFERI -->
+    <div id="caloriferiContainer"></div>
 
 </main>
 
@@ -83,27 +97,78 @@
 
 <!-- SHEET NUOVO CALORIFERO -->
 <div id="caloriferoSheet" class="sheet hidden">
-  <div class="sheet-header">
-    <h2>Nuovo Calorifero</h2>
-    <button class="close-btn" onclick="chiudiCaloriferoSheet()">✕</button>
-  </div>
 
-  <div class="sheet-content">
-    <label>Nome</label>
-    <input type="text" id="nomeCalorifero" placeholder="Es: 36131617/0117">
+    <div class="sheet-header">
 
-    <label>Stanza</label>
-    <input type="text" id="stanzaCalorifero" placeholder="Es: Soggiorno">
-        
-    <label>Fattore di conversione</label>
-    <input
+        <h2>
+            <i data-lucide="flame"></i>
+            Nuovo Calorifero
+        </h2>
+
+        <button
+            class="close-btn"
+            onclick="chiudiCaloriferoSheet()">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div class="sheet-content">
+
+        <label>Nome</label>
+
+        <input
             type="text"
-            imputmode="decimal"
+            id="nomeCalorifero"
+            placeholder="Es. 36131617/0117">
+
+        <label>Stanza</label>
+
+        <select id="stanzaCalorifero">
+
+            <option value="">Seleziona una stanza...</option>
+
+            <option>Bagno</option>
+            <option>Cucina</option>
+            <option>Soggiorno</option>
+            <option>Anticamera</option>
+            <option>Camera</option>
+            <option>Cameretta</option>
+
+</select>
+
+        <label>Fattore di conversione</label>
+
+        <input
+            type="text"
+            inputmode="decimal"
             id="fattoreCalorifero"
             placeholder="0,4888">
 
-    <button class="btn-pill full" onclick="salvaCalorifero()">Aggiungi</button>
-  </div>
+        <div class="modal-actions">
+
+            <button
+                class="btn-modal-secondary"
+                onclick="chiudiCaloriferoSheet()">
+
+                Annulla
+
+            </button>
+
+            <button
+                class="btn-modal-primary"
+                onclick="salvaCalorifero()">
+
+                Aggiungi
+
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
 <!-- MODALE CONFERMA ELIMINAZIONE -->
@@ -122,16 +187,22 @@
             Questa operazione non può essere annullata.
         </p>
 
-        <div class="confirm-buttons">
+        <div class="sheet-actions">
 
-            <button class="btn-secondary"
-                    onclick="chiudiConfirmModal()">
+            <button
+                class="btn-modal-secondary"
+                onclick="chiudiConfirmModal()">
+
                 Annulla
+
             </button>
 
-            <button class="btn-pill"
-                    id="confirmButton">
+            <button
+                class="btn-modal-primary"
+                id="confirmButton">
+
                 Elimina
+
             </button>
 
         </div>
@@ -159,26 +230,32 @@
 
     <div id="testoConferma"></div>
 
-    <div class="confirm-buttons">
+    <div class="sheet-actions">
 
-      <button
-        class="btn-secondary"
+    <button
+        class="btn-modal-secondary"
         onclick="chiudiConferma()">
-        Annulla
-      </button>
 
-      <button
-          id="btnConferma"
-          class="btn-danger">
-          Elimina
-      </button>
-    </div>
+        Annulla
+
+    </button>
+
+    <button
+        id="btnConferma"
+        class="btn-modal-primary">
+
+        Elimina
+
+    </button>
+
+</div>
 
   </div>
 
 </div>
 
 <!-- JS -->
+<script src="js/theme.js"></script>
  <script src="js/version.js"></script>
 <script src="js/app.js"></script>
 <script src="js/caloriferi.js"></script>

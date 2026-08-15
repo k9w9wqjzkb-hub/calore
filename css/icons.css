@@ -1,0 +1,65 @@
+/* ======================================================
+   CALORE 2.0
+   COMPONENTE: ICONS
+
+   Responsabilità:
+   - Icona base
+   - Contenitore icona
+   - Varianti colore
+   - Varianti dimensione
+   - Stati (hover, disabled...)
+
+====================================================== */
+
+/* =====================================================
+   ICONA BASE
+===================================================== */
+
+.icon{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:56px;
+    height:56px;
+
+    border-radius:var(--radius-md);
+
+    font-size:26px;
+
+}
+
+.page-icon{
+    width:24px;
+    height:24px;
+    min-width:24px;
+    flex-shrink:0;
+    color:var(--color-primary);
+}
+
+/* =====================================================
+   VARIANTI COLORE
+===================================================== */
+
+.icon-primary{
+
+    background:rgba(245,90,24,.10);
+
+    color:var(--color-primary);
+
+}
+
+.icon-gray{
+
+    background:rgba(0,0,0,.05);
+
+    color:var(--text-light);
+
+}
+
+.icon i{
+
+    font-size:26px;
+
+}
