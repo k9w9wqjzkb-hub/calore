@@ -296,12 +296,13 @@ function cancellaLettura(id) {
 
     const contenuto = `
         <div class="confirm-info">
+
             <div class="confirm-name">
-                ${lettura.calorifero}
+                ${lettura.stanza}
             </div>
 
             <div class="confirm-room">
-                📍 ${lettura.stanza}
+                📍 ${lettura.calorifero}
             </div>
 
             <div class="confirm-room">
@@ -311,14 +312,15 @@ function cancellaLettura(id) {
             <div class="confirm-room">
                 🔢 ${formatDisplay(lettura.valore)}
             </div>
-        </div>
 
-        <div class="confirm-divider"></div>
+    </div>
 
-        <div class="confirm-message">
-            Questa lettura verrà eliminata definitivamente.
-        </div>
-    `;
+    <div class="confirm-divider"></div>
+
+    <div class="confirm-message">
+        Questa lettura verrà eliminata definitivamente.
+    </div>
+`;
 
     apriConferma(
         "🗑 Elimina lettura",

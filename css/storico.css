@@ -26,9 +26,9 @@
 
     grid-template-columns:
         110px
-        minmax(90px, 1fr)
+        minmax(80px, 1fr)
         65px
-        82px;
+        58px;
 
     gap: 6px;
 
@@ -136,23 +136,28 @@
 
 @media (max-width:480px){
 
-.actions{
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    gap:var(--space-xs);
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 2px;
 }
 
-.actions button{
-    width:22px;
-    height:22px;
-    padding:0;
-    margin:0;
-    border:none;
-    background:none;
-    cursor:pointer;
-    font-size:15px;
-    transition:.15s;
+.actions button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 }

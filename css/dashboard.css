@@ -171,3 +171,27 @@
 .dashboard-actions{
     display:flex;
 }
+
+/*==================================================
+    DASHBOARD - CARD CALORIFERI / LETTURE
+==================================================*/
+
+.stats-grid .card-small{
+
+    min-height:58px;
+
+    padding:12px 16px;
+
+}
+
+.stats-grid .card-small .card-header{
+
+    margin-bottom:2px;
+
+}
+
+.stats-grid .card-small .card-center .number{
+
+    font-size:30px;
+
+}

@@ -130,7 +130,6 @@ html, body {
 
 }
 
-
 /*--------------------------------------------------
     CONTENITORE
 --------------------------------------------------*/
@@ -158,7 +157,6 @@ html, body {
 
 }
 
-
 /*--------------------------------------------------
     TITOLO
 --------------------------------------------------*/
@@ -177,7 +175,6 @@ html, body {
 
 }
 
-
 /*--------------------------------------------------
     LABEL
 --------------------------------------------------*/
@@ -195,7 +192,6 @@ html, body {
     color:var(--text-body);
 
 }
-
 
 /*--------------------------------------------------
     CAMPI
@@ -232,7 +228,6 @@ html, body {
 
 }
 
-
 .modal-content input:focus,
 .modal-content select:focus{
 
@@ -242,7 +237,6 @@ html, body {
         0 0 0 3px rgba(190,50,40,.10);
 
 }
-
 
 /*--------------------------------------------------
     PULSANTI
@@ -259,7 +253,6 @@ html, body {
     margin-top:12px;
 
 }
-
 
 .modal-actions button{
 
@@ -283,13 +276,11 @@ html, body {
 
 }
 
-
 .modal-actions button:active{
 
     transform:scale(.98);
 
 }
-
 
 .modal-actions .secondary,
 .modal-actions .btn-modal-secondary{
@@ -300,7 +291,6 @@ html, body {
 
 }
 
-
 .modal-actions .primary,
 .modal-actions .btn-modal-primary{
 
@@ -310,13 +300,11 @@ html, body {
 
 }
 
-
 .modal-actions button:hover{
 
     opacity:.9;
 
 }
-
 
 /*--------------------------------------------------
     CONFERMA
@@ -330,7 +318,6 @@ html, body {
 
 }
 
-
 /*--------------------------------------------------
     INFORMAZIONI LETTURA
 --------------------------------------------------*/
@@ -340,7 +327,6 @@ html, body {
     margin-bottom:18px;
 
 }
-
 
 .confirm-name{
 
@@ -352,7 +338,6 @@ html, body {
 
 }
 
-
 .confirm-room{
 
     margin-top:6px;
@@ -363,7 +348,6 @@ html, body {
 
 }
 
-
 .confirm-divider{
 
     border-top:1px solid var(--border-light);
@@ -372,7 +356,6 @@ html, body {
 
 }
 
-
 .confirm-message{
 
     line-height:1.6;
@@ -380,7 +363,6 @@ html, body {
     color:var(--text-muted);
 
 }
-
 
 /*--------------------------------------------------
     ANIMAZIONE

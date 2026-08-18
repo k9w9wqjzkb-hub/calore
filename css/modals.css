@@ -83,3 +83,20 @@
   cursor: pointer;
 }
 
+/*==================================================
+    CAMPO DATA - iOS
+==================================================*/
+
+#editData{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    display:block;
+    -webkit-appearance:none;
+    appearance:none;
+}
+
+#editData::-webkit-date-and-time-value{
+    text-align:left;
+}
