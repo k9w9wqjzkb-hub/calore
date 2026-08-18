@@ -21,3 +21,122 @@
     justify-content:space-between;
     margin:4px 0;
 }
+
+/*==================================================
+    CARD RIPARTIZIONE - LAYOUT COMPATTO
+==================================================*/
+
+#ripartizioneContainer{
+    padding:0 10px;
+}
+
+#ripartizioneContainer .card{
+    width:100%;
+    box-sizing:border-box;
+
+    padding:8px 14px;
+
+    margin-bottom:8px;
+
+    border-radius:var(--radius-lg);
+}
+
+.rip-card{
+
+    gap:10px;
+
+    min-height:62px;
+
+}
+
+.rip-left{
+    min-width:0;
+}
+
+.rip-right{
+    width:145px;
+    flex-shrink:0;
+}
+
+.rip-right .row{
+    margin:2px 0;
+    line-height:1.25;
+}
+
+/*==================================================
+    CARD ANNO TERMICO
+==================================================*/
+
+.rip-anno-card{
+
+    margin-left:10px;
+    margin-right:10px;
+
+    box-sizing:border-box;
+
+    padding:10px 16px;
+
+    margin-bottom:8px;
+
+    border-radius:var(--radius-lg);
+
+}
+
+
+/*==================================================
+    TOTALE UNITÀ CONTABILIZZATE
+==================================================*/
+
+.rip-card-total{
+
+    width:calc(100% - 20px);
+
+    margin-left:10px;
+    margin-right:10px;
+
+    height:48px;
+    min-height:48px;
+
+    box-sizing:border-box;
+
+    padding:6px 16px;
+
+    margin-bottom:8px;
+
+    border-radius:var(--radius-lg);
+
+    display:flex;
+    align-items:center;
+}
+
+
+.rip-card-total .card-top{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin:0;
+
+}
+
+
+.rip-card-total .big-number{
+
+    margin:0;
+
+    font-size:22px;
+
+    line-height:1;
+
+    font-weight:700;
+
+    color:var(--color-primary);
+
+}
