@@ -195,3 +195,16 @@
     font-size:30px;
 
 }
+
+/*==================================================
+    DASHBOARD - CARD CONSUMO
+==================================================*/
+
+.stats-grid .card-total{
+    min-height:170px;
+}
+
+.stats-grid .card-total .card-center{
+    padding-top:4px;
+    padding-bottom:4px;
+}

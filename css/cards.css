@@ -267,6 +267,8 @@
 
     background:var(--surface-card);
 
+    gap:12px;
+
 }
 
 .room-item:hover{
@@ -280,9 +282,8 @@
 }
 
 .room-content{
-
     flex:1;
-
+    min-width:0;
 }
 
 .dashboard-room-name{
@@ -311,6 +312,12 @@
 
 .dashboard-room-value{
 
+    flex-shrink:0;
+
+    min-width:48px;
+
+    text-align:right;
+
     font-size:13px;
 
     font-weight:600;
@@ -318,7 +325,6 @@
     color:var(--color-primary);
 
     font-variant-numeric:tabular-nums;
-
 }
 
 .rooms-link{

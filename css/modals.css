@@ -100,3 +100,26 @@
 #editData::-webkit-date-and-time-value{
     text-align:left;
 }
+
+/*==================================================
+    NUOVA LETTURA - INPUT SAFE iOS
+==================================================*/
+
+.sheet-content input,
+.sheet-content select{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+}
+
+.sheet-content input[type="date"]{
+    display:block;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+
+    -webkit-appearance:none;
+    appearance:none;
+}
