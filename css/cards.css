@@ -253,13 +253,15 @@
 
     display:flex;
     align-items:center;
-    justify-content:space-between;
 
-    min-height:34px;
+    width:100%;
+    min-width:0;
+
+    box-sizing:border-box;
 
     padding:
-    var(--space-xxs)
-    var(--space-sm);
+        var(--space-xxs)
+        var(--space-sm);
 
     border-radius:var(--radius-sm);
 
@@ -267,7 +269,7 @@
 
     background:var(--surface-card);
 
-    gap:12px;
+    gap:10px;
 
 }
 
@@ -284,6 +286,7 @@
 .room-content{
     flex:1;
     min-width:0;
+    overflow:hidden;
 }
 
 .dashboard-room-name{
@@ -291,6 +294,8 @@
     display:flex;
 
     align-items:center;
+
+    min-width:0;
 
     gap:var(--space-xs);
 
@@ -300,23 +305,36 @@
 
     color:var(--text-body);
 
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
 }
 
 .dashboard-room-name i{
     width:var(--icon-sm);
     height:var(--icon-sm);
+
+    flex:0 0 var(--icon-sm);
+
     color:var(--color-black);
     stroke-width:2;
-    flex-shrink:0;
 }
 
 .dashboard-room-value{
 
-    flex-shrink:0;
+    flex:0 0 60px;
 
-    min-width:48px;
+    width:60px;
+    min-width:60px;
+
+    margin-left:auto;
 
     text-align:right;
+
+    white-space:nowrap;
 
     font-size:13px;
 

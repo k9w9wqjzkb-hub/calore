@@ -197,14 +197,35 @@
 }
 
 /*==================================================
-    DASHBOARD - CARD CONSUMO
+    CONSUMO CONTABILIZZATO
 ==================================================*/
 
-.stats-grid .card-total{
-    min-height:170px;
+.dashboard-consumo-card{
+
+    min-height:0;
+
+    height:130px;
+
+    padding:16px 20px;
+
+    box-sizing:border-box;
+
 }
 
-.stats-grid .card-total .card-center{
-    padding-top:4px;
-    padding-bottom:4px;
+.dashboard-consumo-card .card-center{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.dashboard-consumo-card .number{
+
+    margin:0;
+
 }

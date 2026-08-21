@@ -140,3 +140,32 @@
     color:var(--color-primary);
 
 }
+
+/*==================================================
+    RIPARTIZIONE - COMPATTAZIONE iPHONE
+==================================================*/
+
+@media (max-width:480px){
+
+    #ripartizioneContainer .card{
+        padding:8px 14px;
+        margin-bottom:6px;
+    }
+
+    #ripartizioneContainer .rip-card{
+        min-height:64px;
+    }
+
+    #ripartizioneContainer .rip-right .row{
+        margin:0;
+        line-height:1.1;
+    }
+
+    #ripartizioneContainer + .card-total{
+        min-height:50px;
+        height:50px;
+        padding:6px 14px;
+        margin-top:6px;
+    }
+
+}
