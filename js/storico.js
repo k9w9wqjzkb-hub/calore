@@ -224,6 +224,10 @@ function modificaLettura(id) {
     select.appendChild(option);
 
     document
+        .getElementById("modificaLetturaOverlay")
+        .classList.remove("hidden");
+
+    document
         .getElementById("modalModificaLettura")
         .classList.remove("hidden");
 
@@ -233,9 +237,17 @@ function chiudiModificaLettura() {
 
     letturaInModifica = null;
 
-    document
-        .getElementById("modalModificaLettura")
-        .classList.add("hidden");
+    const overlay = document.getElementById("modificaLetturaOverlay");
+
+    if (overlay) {
+        overlay.classList.add("hidden");
+    }
+
+    const modal = document.getElementById("modalModificaLettura");
+
+    if (modal) {
+        modal.classList.add("hidden");
+    }
 
 }
 

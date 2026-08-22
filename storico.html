@@ -151,12 +151,33 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
 </main>
 
-<!-- MODALE MODIFICA LETTURA -->
-<div id="modalModificaLettura" class="modal hidden">
+<!-- OVERLAY MODIFICA LETTURA -->
+<div
+    id="modificaLetturaOverlay"
+    class="sheet-overlay hidden">
+</div>
 
-    <div class="modal-content">
+<!-- SHEET MODIFICA LETTURA -->
+<div id="modalModificaLettura" class="sheet hidden">
 
-        <h3>✏️ Modifica Lettura</h3>
+    <div class="sheet-header">
+
+        <h2>
+            <i data-lucide="pencil"></i>
+            Modifica Lettura
+        </h2>
+
+        <button
+            class="close-btn"
+            onclick="chiudiModificaLettura()">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div class="sheet-content">
 
         <label for="editData">
             Data

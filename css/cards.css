@@ -291,25 +291,21 @@
 
 .dashboard-room-name{
 
-    display:flex;
-
-    align-items:center;
+    flex:1;
 
     min-width:0;
 
-    gap:var(--space-xs);
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
 
     font-size:var(--font-page-subtitle);
 
     font-weight:400;
 
     color:var(--text-body);
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
 
 }
 

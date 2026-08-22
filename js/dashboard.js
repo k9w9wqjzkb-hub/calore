@@ -90,25 +90,15 @@ function renderConsumiPerStanzaCard() {
 
             card.className = "dashboard-room-item";
 
-                const icone = {
-                    "Anticamera": "door-open",
-                    "Bagno": "bath",
-                    "Camera": "bed-double",
-                    "Cameretta": "bed-single",
-                    "Cucina": "cooking-pot",
-                    "Soggiorno": "sofa"
-        };
-
         card.innerHTML = `
             <div class="dashboard-room-name">
-                <i data-lucide="${icone[stanza] || 'house'}"></i>
-                <span>${stanza}</span>
-            </div>
+            <span>${stanza}</span>
+        </div>
 
-            <div class="dashboard-room-value">
-                ${formatUnita(consumi[stanza])}
-            </div>
-        `;
+        <div class="dashboard-room-value">
+            ${formatUnita(consumi[stanza])}
+        </div>
+    `;
             grid.appendChild(card);
 
         });
