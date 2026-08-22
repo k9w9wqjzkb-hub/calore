@@ -309,31 +309,34 @@
 
 }
 
-.dashboard-room-name i{
-    width:var(--icon-sm);
-    height:var(--icon-sm);
+.dashboard-room-name{
 
-    flex:0 0 var(--icon-sm);
+    flex:1;
+    min-width:0;
 
-    color:var(--color-black);
-    stroke-width:2;
+    white-space:nowrap;
+
+    font-size:14px;
+    font-weight:400;
+
+    color:var(--text-body);
+
 }
 
 .dashboard-room-value{
 
-    flex:0 0 60px;
+    flex:0 0 56px;
 
-    width:60px;
-    min-width:60px;
+    width:56px;
+    min-width:56px;
 
-    margin-left:auto;
+    margin-left:8px;
 
     text-align:right;
 
     white-space:nowrap;
 
     font-size:13px;
-
     font-weight:600;
 
     color:var(--color-primary);
