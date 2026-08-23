@@ -286,27 +286,7 @@
 .room-content{
     flex:1;
     min-width:0;
-    overflow:hidden;
-}
-
-.dashboard-room-name{
-
-    flex:1;
-
-    min-width:0;
-
-    overflow:hidden;
-
-    white-space:nowrap;
-
-    text-overflow:ellipsis;
-
-    font-size:var(--font-page-subtitle);
-
-    font-weight:400;
-
-    color:var(--text-body);
-
+    overflow:visible;
 }
 
 .dashboard-room-name{
@@ -342,6 +322,7 @@
     color:var(--color-primary);
 
     font-variant-numeric:tabular-nums;
+
 }
 
 .rooms-link{
