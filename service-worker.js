@@ -111,61 +111,36 @@ self.addEventListener('fetch', event => {
 
     const request = event.request;
 
-    // Gestiamo solamente le richieste GET
-    if (request.method !== 'GET') {
-        return;
-    }
+    if (request.method !== 'GET') return;
 
     event.respondWith(
 
-        caches.match(request)
-            .then(cachedResponse => {
+        fetch(request)
 
-                // Se il file è già in cache lo utilizziamo
-                if (cachedResponse) {
+            .then(networkResponse => {
 
-                    return cachedResponse;
+                if (
+                    networkResponse &&
+                    networkResponse.status === 200 &&
+                    networkResponse.type === 'basic'
+                ) {
+
+                    const responseClone = networkResponse.clone();
+
+                    caches.open(CACHE_NAME)
+                        .then(cache => {
+                            cache.put(request, responseClone);
+                        });
 
                 }
 
-                // Altrimenti proviamo a scaricarlo
-                return fetch(request)
-                    .then(networkResponse => {
+                return networkResponse;
 
-                        // Salviamo in cache solo risposte valide
-                        if (
-                            networkResponse &&
-                            networkResponse.status === 200 &&
-                            networkResponse.type === 'basic'
-                        ) {
+            })
 
-                            const responseClone =
-                                networkResponse.clone();
+            .catch(() => {
 
-                            caches.open(CACHE_NAME)
-                                .then(cache => {
-                                    cache.put(
-                                        request,
-                                        responseClone
-                                    );
-                                });
-
-                        }
-
-                        return networkResponse;
-
-                    })
-                    .catch(() => {
-
-                        // Se siamo offline e la richiesta
-                        // non è disponibile in cache
-                        if (request.mode === 'navigate') {
-
-                            return caches.match('./index.html');
-
-                        }
-
-                    });
+                return caches.match(request);
 
             })
 
