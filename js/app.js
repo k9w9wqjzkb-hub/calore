@@ -13,7 +13,7 @@
 ==================================================*/
 
 const DB_KEY = "calore-db";
-const APP_VERSION = "1.0";
+const APP_VERSION = APP.version;
 
 /*==================================================
     02 - DATABASE
