@@ -1,3 +1,29 @@
+function aggiornaUltimaLettura() {
+
+    const letture = getDB().letture;
+
+    const elemento = document.getElementById("ultimaLettura");
+
+    if (!elemento) return;
+
+    if (!letture.length) {
+        elemento.textContent = "Nessuna lettura";
+        return;
+    }
+
+    const ultima = letture.reduce((ultima, lettura) => {
+
+        return new Date(lettura.data) > new Date(ultima.data)
+            ? lettura
+            : ultima;
+
+    });
+
+    elemento.textContent =
+        new Date(ultima.data).toLocaleDateString("it-IT");
+
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
     aggiornaStatistiche();
@@ -21,5 +47,5 @@ function aggiornaStatistiche(){
             APP_VERSION;
 
     }
-
-}
+        aggiornaUltimaLettura();
+    }
