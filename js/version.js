@@ -6,9 +6,9 @@ const APP = {
 
     name: "Calore PRO",
 
-    version: "1.0.0",
+    version: "1.0.1",
 
-    build: "2026.07.16",
+    build: "2026.10.01",
 
     author: "Sergio Comi"
 
